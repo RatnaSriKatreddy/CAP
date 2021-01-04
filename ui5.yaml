@@ -25,4 +25,32 @@ builder:
     configuration:
       srcFile: "/xs-app.json"
       destFile: "/xs-app.json"
+      
+      # Project Setup
+general:
+  pipeline: "sap-ui5-cf"
+
+# Stage enablement
+stages:
+  testStage:
+    enable: true || false
+  malwareScanStage:
+    enable: true || false
+  deployStage:
+    enable: true
+  tmsStage:
+    enable: true || false
+    
+# Stage configuration
+steps:
+  cloudFoundryDeploy:
+    cloudFoundry:
+      apiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
+      org: "TMS-CICD"
+      space: "TMS_CICD_SPACE"
+      credentialsId: "e88bcb8a-4ef9-3375-890e-34d8daa7c0de"
+      
+    tmsUpload:
+    nodeName: "TMS_CICD_DEVNODE"
+    credentialsId: "8469b81c-167f-450e-b701-b6c773879bee"
   
