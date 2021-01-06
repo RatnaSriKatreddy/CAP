@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<layout:Grid defaultSpan="L12 M12 S12">
+			<viz:VizFrame height="30rem" id="idVizFrame"
+				vizProperties="{title: {visible: true,text:'Top Line - Capacity'}, legend: {itemMargin: 0.2, groupByShape: true, label: {style: {fontSize: '11px'}}}, legendGroup: {layout: {alignment: 'center', position: 'bottom'}}, categoryAxis: { title: { visible: false }, label: {style: {fontSize: '14px'}} }, valueAxis: { title: { visible: false } }, plotArea: {colorPalette : ['#ffdab3','#b3ccff','#ff0000'], dataLabel: {visible: true, style: {fontSize:'14px'}},dataShape:{primaryAxis: ['bar', 'bar', 'line']}}}"
+				vizType="stacked_combination" width="100%" uiConfig="{applicationSet:'fiori'}">
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{TopLineGraphData>/}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition value="{Year}" name="Year"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition value="{AdditionalCapacity}" name="Additional Capacity"/>
+							<viz.data:MeasureDefinition value="{ActualCapacity}" name="Actual Capacity"/>
+							<viz.data:MeasureDefinition value="{Demand}" name="Demand"/>
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem values="Additional Capacity" type="Measure" uid="valueAxis"/>
+					<viz.feeds:FeedItem values="Actual Capacity" type="Measure" uid="valueAxis"/>
+					<viz.feeds:FeedItem values="Demand" type="Measure" uid="valueAxis"/>
+					<viz.feeds:FeedItem values="Year" type="Dimension" uid="categoryAxis"/>
+				</viz:feeds>
+			</viz:VizFrame>
+		</layout:Grid>
+</core:FragmentDefinition>

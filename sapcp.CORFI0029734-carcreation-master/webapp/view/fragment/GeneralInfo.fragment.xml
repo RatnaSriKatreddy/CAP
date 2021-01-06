@@ -1,0 +1,330 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core">
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" class="sapUiTinyMargin sapUiNoContentPadding">
+		<uxap:blocks>
+			<VBox>
+				<form:SimpleForm editable="true" title="" columnsL="2" layout="ResponsiveGridLayout">
+					<form:content>
+						<core:Title/>
+						<Label text="Financing type" required="true" wrapping="true"/>
+						<HBox width="100%">
+							<Select change="onChangeSelectFinancingType"
+								items="{ path: '/FinancingType', sorter: '{Name}', filters : { path : 'State', operator : 'EQ', value1 : 'Active'} }"
+								selectedKey="{CARModel>/FinancingTypeId}" forceSelection="false" valueState="{errorModel>/FinancingTypeIdValueState}"
+								valueStateText="{errorModel>/FinancingTypeIdValueStateText}" class="sapUiLargeMarinEnd">
+								<core:Item key="{Id}" text="{Name}"/>
+							</Select>
+							<unified:FileUploader id="fileUploaderCARPicture" buttonOnly="true" iconOnly="true" name="pictureUpload" uploadOnChange="false"
+								change="handleValueChangeCARPicture" style="Emphasized" fileType="{AttachmentFileTypes>/Picture}" fileSizeExceed="fileSizeExceededForDocii"
+								typeMissmatch="typeMismatchAttachments" icon="sap-icon://camera" class="sapUiLargeMarginBegin sapUiNoMarginTop"></unified:FileUploader>
+						</HBox>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" columnsL="2" layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Visible in Radar?" required="true" tooltip="Some tooltip" wrapping="true"/>
+						<layout:HorizontalLayout>
+							<RadioButtonGroup id="radioVisibleInRadarId" select="radioVisibleInRadarSelected" selectedIndex="-1" columns="2"
+								valueState="{errorModel>/InRadarValueState}">
+								<RadioButton groupName="VisibleInRadar" text="Yes"/>
+								<RadioButton groupName="VisibleInRadar" text="No"/>
+							</RadioButtonGroup>
+							<Button id="idIconVisibleInRadar" class="sapUiTinyMarginBegin sapUiNoMarginEnd sapUiNoMarginTop sapUiNoMarginBottom" icon="sap-icon://hint"
+								press="iconButtonPress" type="Transparent"/>
+						</layout:HorizontalLayout>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection id="opssOrganization" titleLevel="H1" titleUppercase="true" title="Organization"
+		class="sapUiTinyMargin sapUiNoContentPadding">
+		<uxap:blocks>
+			<VBox>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsXL="2" columnsM="2" maxContainerCols="2" emptySpanS="2"
+					emptySpanM="1" emptySpanL="2" emptySpanXL="4">
+					<core:Title/>
+					<Label text="CBU Name - Code" required="true" wrapping="true"/>
+					<Select change="onCBUChanged"
+						items="{ path: '/CBU', sorter: '{Name}', filters : { path : 'State', operator : 'EQ', value1 : 'Active'}, length: 500 }"
+						selectedKey="{CARModel>/CBUId}" forceSelection="false" valueState="{errorModel>/CBUIdValueState}"
+						valueStateText="{errorModel>/CBUIdValueStateText}">
+						<core:Item key="{Id}" text="{Name} - {Id}"/>
+					</Select>
+					<core:Title/>
+					<Label text="WBU Name - Code" wrapping="true"/>
+					<Input id="inputWwbuNameId" editable="false"/>
+					<core:Title/>
+					<Label text="Site Name - Code" required="true" wrapping="true"/>
+					<Select id="selectSiteId" change="onSiteChanged"
+						items="{ path: '/Site', sorter: '{Name}', filters : { path : 'State', operator : 'EQ', value1 : 'Active'}, length: 500 }"
+						selectedKey="{CARModel>/SiteId}" enabled="{= ${CARModel>/CBUId} !== ''}" forceSelection="false" valueState="{errorModel>/SiteIdValueState}"
+						valueStateText="{errorModel>/SiteIdValueStateText}">
+						<core:Item key="{Id}" text="{Name} - {Id}"/>
+					</Select>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsXL="2" columnsM="2" maxContainerCols="2" emptySpanS="2"
+					emptySpanM="1" emptySpanL="2" emptySpanXL="4" visible="{= ${CARModel>/XCBU} === 'Yes'}">
+					<core:Title/>
+					<Label text="X-CBU 1 Name - Code" required="true" wrapping="true"/>
+					<Select change="onXCBUOneChanged"
+						items="{ path: '/CBU', sorter: '{Name}', filters : { path : 'State', operator : 'EQ', value1 : 'Active'}, length: 500 }"
+						selectedKey="{CARModel>/XCBUOneId}" forceSelection="false" valueState="{errorModel>/XCBUOneIdValueState}"
+						valueStateText="{errorModel>/XCBUOneIdValueStateText}">
+						<core:Item key="{Id}" text="{Name} - {Id}"/>
+					</Select>
+					<core:Title/>
+					<Label text="WBU Name - Code" wrapping="true"/>
+					<Input id="inputXWwbuOneNameId" editable="false"/>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsXL="2" columnsM="2" maxContainerCols="2" emptySpanS="2"
+					emptySpanM="1" emptySpanL="2" emptySpanXL="4" visible="{= ${CARModel>/XCBU} === 'Yes'}">
+					<core:Title/>
+					<Label text="X-CBU 2 Name - Code" wrapping="true"/>
+					<Select change="onXCBUTwoChanged"
+						items="{ path: '/CBU', sorter: '{Name}', filters : { path : 'State', operator : 'EQ', value1 : 'Active'}, length: 500 }"
+						selectedKey="{CARModel>/XCBUTwoId}" forceSelection="false" valueState="{errorModel>/XCBUTwoIdValueState}"
+						valueStateText="{errorModel>/XCBUTwoIdValueStateText}">
+						<core:Item key="{Id}" text="{Name} - {Id}"/>
+					</Select>
+					<core:Title/>
+					<Label text="WBU Name - Code" wrapping="true"/>
+					<Input id="inputXWwbuTwoNameId" editable="false"/>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsXL="2" columnsM="2" maxContainerCols="2" emptySpanS="2"
+					emptySpanM="1" emptySpanL="2" emptySpanXL="4" visible="{= ${CARModel>/XCBU} === 'Yes'}">
+					<core:Title/>
+					<Label text="X-CBU 3 Name - Code" wrapping="true"/>
+					<Select change="onXCBUThreeChanged"
+						items="{ path: '/CBU', sorter: '{Name}', filters : { path : 'State', operator : 'EQ', value1 : 'Active'}, length: 500 }"
+						selectedKey="{CARModel>/XCBUThreeId}" forceSelection="false" valueState="{errorModel>/XCBUThreeIdValueState}"
+						valueStateText="{errorModel>/XCBUThreeIdValueStateText}">
+						<core:Item key="{Id}" text="{Name} - {Id}"/>
+					</Select>
+					<core:Title/>
+					<Label text="WBU Name - Code" wrapping="true"/>
+					<Input id="inputXWwbuThreeNameId" editable="false"/>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Information" class="sapUiTinyMargin sapUiNoContentPadding">
+		<uxap:blocks>
+			<VBox>
+				<form:SimpleForm editable="true" title="" columnsXL="2" layout="ResponsiveGridLayout" columnsM="2" columnsL="2" maxContainerCols="2"
+					emptySpanS="2" emptySpanM="1" emptySpanL="2" emptySpanXL="4">
+					<form:content>
+						<core:Title/>
+						<Label text="CAR Category" required="true" wrapping="true"/>
+						<Select id="idSelectCARcategory" change="onCARCategoryChanged" selectedKey="{CARModel>/CategoryId}" forceSelection="false"
+							items="{ path: '/Category', sorter: { path: 'Id' }, filters : { path : 'State', operator : 'EQ', value1 : 'Active'} }"
+							valueState="{errorModel>/CategoryIdValueState}" valueStateText="{errorModel>/CategoryIdValueStateText}">
+							<core:Item key="{Id}" text="{Name} - {Description}"/>
+						</Select>
+						<Label text="Is your CAR for WBS?" required="{= ${CARModel>/CategoryId} === 5}" wrapping="true" visible="{= ${CARModel>/CategoryId} === 5}"/>
+						<layout:HorizontalLayout>
+							<RadioButtonGroup id="radioForWBSId" select="radioWBSSelected" selectedIndex="-1" columns="2" valueState="{errorModel>/ForWBSValueState}"
+								visible="{= ${CARModel>/CategoryId} === 5}">
+								<RadioButton groupName="WBSRelevant" text="Yes"/>
+								<RadioButton groupName="WBSRelevant" text="No"/>
+							</RadioButtonGroup>
+							<Button id="idIconCARForWBS" class="sapUiTinyMarginBegin sapUiNoMarginEnd sapUiNoMarginTop sapUiNoMarginBottom" icon="sap-icon://hint"
+								press="iconButtonPress" type="Transparent" width="80%" visible="{= ${CARModel>/CategoryId} === 5}"/>
+						</layout:HorizontalLayout>
+						<core:Title/>
+						<Label text="CAR Sub-Category" required="true" wrapping="true"/>
+						<Select id="idSelectSubcategory" change="changeSubCategory" selectedKey="{CARModel>/SubCategoryId}" forceSelection="false"
+							items="{ path: '/Subcategory', sorter: { path: 'Id' }, filters : { path : 'State', operator : 'EQ', value1 : 'Active'} }"
+							valueState="{errorModel>/SubCategoryIdValueState}" valueStateText="{errorModel>/SubCategoryIdValueStateText}"
+							enabled="{= ${CARModel>/CategoryId} !== null}">
+							<core:Item key="{Id}" text="{Description}"/>
+						</Select>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" columnsL="2" layout="ResponsiveGridLayout" visible="{= ${CARModel>/CategoryId} === 1}">
+					<form:content>
+						<Label text="X-CBU" required="true" tooltip="Some tooltip" wrapping="true"/>
+						<RadioButtonGroup id="radioXCBUId" select="radioXCBUSelected" selectedIndex="-1" columns="2">
+							<RadioButton groupName="XCBU" text="Yes"/>
+							<RadioButton groupName="XCBU" text="No"/>
+						</RadioButtonGroup>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" columnsXL="2" layout="ResponsiveGridLayout" columnsM="2" columnsL="2" maxContainerCols="2"
+					emptySpanS="2" emptySpanM="1" emptySpanL="2" emptySpanXL="4">
+					<form:content>
+						<Label text="Project Name" required="true" wrapping="true"/>
+						<Input id="inputProjectNameId" value="{CARModel>/Name}" type="Text" required="true" maxLength="30"
+							valueState="{= ${CARModel>/Name}.length > 30 ? 'Error' : ${errorModel>/NameValueState}}" liveChange="onLiveChangeInput"
+							valueStateText="{= ${CARModel>/Name}.length > 30 ? 'The input should be maximum 30 characters' : ${errorModel>/NameValueStateText}}"/>
+						<Label text="Expected Validation Date" required="true" wrapping="true"/>
+						<HBox width="60%">
+							<FlexBox width="100%" direction="Column">
+								<DatePicker id="ExpValidationDateId" change="expValidationDateChanged" value="{CARModel>/ExpValidationDate}" displayFormat="dd/MM/yyyy"
+									valueFormat="dd-MM-yyyy" placeholder="month/year" required="true" valueState="{errorModel>/ExpValidationDateValueState}"
+									valueStateText="{errorModel>/ExpValidationDateValueStateText}"/>
+							</FlexBox>
+						</HBox>
+						<core:Title/>
+						<Label text="Project Leader" required="true" wrapping="true"/>
+						<Input value="{CARModel>/Leader}" type="Text" required="true" maxLength="30"
+							valueState="{= ${CARModel>/Leader}.length > 30 ? 'Error' : ${errorModel>/LeaderValueState}}" liveChange="onLiveChangeInput"
+							valueStateText="{= ${CARModel>/Leader}.length > 30 ? 'The input should be maximum 30 characters' : ${errorModel>/LeaderValueStateText}}"/>
+						<Label text="Expected Go-Live Date" required="true" wrapping="true"/>
+						<HBox width="60%">
+							<FlexBox width="100%" direction="Column">
+								<DatePicker id="ExpGoLiveDateId" change="expGoLiveDateChanged" value="{CARModel>/ExpGoLiveDate}" displayFormat="dd/MM/yyyy"
+									valueFormat="dd-MM-yyyy" placeholder="month/year" required="true" valueState="{errorModel>/ExpGoLiveDateValueState}"
+									valueStateText="{errorModel>/ExpGoLiveDateValueStateText}"/>
+							</FlexBox>
+						</HBox>
+						<Label text="Top Line" required="true"
+							visible="{= ${CARModel>/CategoryId} === 1 &amp;&amp; (${CARModel>/SubCategoryId} === 7 || ${CARModel>/SubCategoryId} === 8)}"/>
+						<Button id="topLineGraphButton" text="Enter Data" press="openDialogGraph"
+							visible="{= ${CARModel>/CategoryId} === 1 &amp;&amp; (${CARModel>/SubCategoryId} === 7 || ${CARModel>/SubCategoryId} === 8)}"/>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="">
+					<form:content>
+						<Label text="Business Objectives" required="true" wrapping="true"/>
+						<TextArea id="textAreaWithBinding" liveChange="onLiveChangeInput" required="true" value="{CARModel>/BusinessObj}" showExceededText="false"
+							maxLength="4000" width="100%" rows="8" valueState="{errorModel>/BusinessObjValueState}"
+							valueStateText="{errorModel>/BusinessObjValueStateText}" valueLiveUpdate="false" growing="true" growingMaxLines="15"/>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" columnsL="2" layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Internal Order Reference" wrapping="true" visible="{= ${CARModel>/Status} === 'Validated - IO in progress'}"/>
+						<Input editable="false" value="{CARModel>/InternalOrderRef}" type="Text" visible="{= ${CARModel>/Status} === 'Validated - IO in progress'}"
+							valueState="{errorModel>/InternalOrderRefValueState}" valueStateText="{errorModel>/InternalOrderRefValueStateText}"
+							liveChange="onLiveChangeInput"/>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" breakpointL="800" breakpointXL="1025" columnsL="{= ${CARModel>/FinancingTypeId} === 3 ? 3 : 1}"
+					layout="ResponsiveGridLayout" emptySpanS="{= ${CARModel>/FinancingTypeId} !== 3 ? 4 : 4}"
+					emptySpanM="{= ${CARModel>/FinancingTypeId} !== 3 ? 5 : 0}" emptySpanL="{= ${CARModel>/FinancingTypeId} !== 3 ? 6 : 0}"
+					emptySpanXL="{= ${CARModel>/FinancingTypeId} !== 3 ? 6 : 0}" labelMinWidth="250">
+					<form:content>
+						<core:Title/>
+						<Label id="lblCARAmountLCId" text="CAR (Capex)" required="true" wrapping="true"
+							visible="{= ${CARModel>/FinancingTypeId} === 1 || ${CARModel>/FinancingTypeId} === 3 || ${CARModel>/FinancingTypeId} === null}"/>
+						<Input id="inputCARAmountLCId" value="{CARModel>/CARAmountLC}" type="Text"
+							visible="{= ${CARModel>/FinancingTypeId} === 1 || ${CARModel>/FinancingTypeId} === 3 || ${CARModel>/FinancingTypeId} === null}"
+							valueState="{= ${CARModel>/CARAmountLC} > 0 ? 'Error' : ${errorModel>/CARAmountLCValueState}}"
+							valueStateText="{= ${CARModel>/CARAmountLC} > 0 ? 'CAR (Capex) Amount should be &lt; 0' : ${errorModel>/CARAmountLCValueStateText}}"
+							liveChange="onLiveChangeInputCARAmountReq" description="KLC" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblLeaseAmountLCId" text="CAR (Lease)" required="true" wrapping="true"
+							visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"/>
+						<Input id="inputLeaseAmountLCId" value="{CARModel>/LeaseAmountLC}" type="Text"
+							visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+							valueState="{= ${CARModel>/LeaseAmountLC} > 0 ? 'Error' : ${errorModel>/LeaseAmountLCValueState}}"
+							valueStateText="{= ${CARModel>/LeaseAmountLC} > 0 ? 'Lease Amount should be &lt; 0' : ${errorModel>/LeaseAmountLCValueStateText}}"
+							liveChange="onLiveChangeInputLeaseAmountReq" description="KLC" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblTotalAmountLCId" text="Total CAR (Capex and Lease)" wrapping="true" visible="{= ${CARModel>/FinancingTypeId} === 3}"
+							design="Bold"/>
+						<Input id="inputTotalAmountLCId" value="{CARModel>/TotalAmountLC}" visible="{= ${CARModel>/FinancingTypeId} === 3}"
+							valueState="{errorModel>/TotalAmountLCValueState}" valueStateText="{errorModel>/TotalAmountLCValueStateText}" editable="false"
+							description="KLC" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblCARAmountLFLEURId" text="CAR (Capex)" wrapping="true"
+							visible="{= ${CARModel>/FinancingTypeId} === 1 || ${CARModel>/FinancingTypeId} === 3 || ${CARModel>/FinancingTypeId} === null}"/>
+						<Input id="inputCARAmountLFLEURId" value="{CARModel>/CARAmountLFLEUR}" editable="false"
+							visible="{= ${CARModel>/FinancingTypeId} === 1 || ${CARModel>/FinancingTypeId} === 3 || ${CARModel>/FinancingTypeId} === null}"
+							description="LFL K€" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblLeaseAmountLFLEURId" text="CAR (Lease)" wrapping="true"
+							visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"/>
+						<Input id="inputLeaseAmountLFLEURId" value="{CARModel>/LeaseAmountLFLEUR}" editable="false"
+							visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" description="LFL K€" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblTotalAmountLFLEURId" text="Total CAR (Capex and Lease)" wrapping="true" visible="{= ${CARModel>/FinancingTypeId} === 3}"/>
+						<Input id="inputTotalAmountLFLEURId" value="{CARModel>/TotalAmountLFLEUR}" editable="false" visible="{= ${CARModel>/FinancingTypeId} === 3}"
+							description="LFL K€" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblCARAmountHISTEUR" text="CAR (Capex)" wrapping="true"
+							visible="{= ${CARModel>/FinancingTypeId} === 1 || ${CARModel>/FinancingTypeId} === 3 || ${CARModel>/FinancingTypeId} === null}"/>
+						<Input id="inputCARAmountHISTEURId" value="{CARModel>/CARAmountHISTEUR}" editable="false"
+							visible="{= ${CARModel>/FinancingTypeId} === 1 || ${CARModel>/FinancingTypeId} === 3 || ${CARModel>/FinancingTypeId} === null}"
+							description="Monthly K€" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblLeaseAmountHISTEUR" text="CAR (Lease)" wrapping="true"
+							visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"/>
+						<Input id="inputLeaseAmountHISTEURId" value="{CARModel>/LeaseAmountHISTEUR}" editable="false"
+							visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" description="Monthly K€" fieldWidth="60%"/>
+						<core:Title/>
+						<Label id="lblTotalAmountHISTEUR" text="Total CAR (Capex and Lease)" wrapping="true" visible="{= ${CARModel>/FinancingTypeId} === 3}"/>
+						<Input id="inputTotalAmountHISTEURId" value="{CARModel>/TotalAmountHISTEUR}" editable="false"
+							visible="{= ${CARModel>/FinancingTypeId} === 3}" description="Monthly K€" fieldWidth="60%"/>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" columnsL="2" layout="ResponsiveGridLayout" class="sapUiNoMarginBottom sapUiMediumMarginTop">
+					<form:content>
+						<core:Title/>
+						<Label text="Included in Strategic Plan?" required="true" wrapping="true"/>
+						<RadioButtonGroup id="radioInclStratPlanId" select="radioInclStratPlanSelected" selectedIndex="-1" columns="2"
+							valueState="{errorModel>/InStrategicPlanValueState}">
+							<RadioButton groupName="includedInStrategicPlan" text="Yes"/>
+							<RadioButton groupName="includedInStrategicPlan" text="No"/>
+						</RadioButtonGroup>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" title="" columnsXL="2" columnsM="2" maxContainerCols="2" columnsL="2" layout="ResponsiveGridLayout"
+					emptySpanS="2" emptySpanM="2" emptySpanL="2" emptySpanXL="4">
+					<form:content>
+						<core:Title/>
+						<Label text="Included in rolling forecast?" required="true" wrapping="true"/>
+						<RadioButtonGroup id="radioInclInLastRollingForecastId" select="radioIncludedInLastRollingForecastSelected" selectedIndex="-1" columns="2"
+							valueState="{errorModel>/InRollingForecastValueState}">
+							<RadioButton groupName="includedInLastRollingForecast" text="Yes"/>
+							<RadioButton groupName="includedInLastRollingForecast" text="No"/>
+						</RadioButtonGroup>
+						<core:Title/>
+						<Label text="Since when?" wrapping="true" required="{= ${CARModel>/InRollingForecast} === 'Yes' }"/>
+						<HBox width="65%">
+							<FlexBox width="100%" direction="Column">
+								<DatePicker id="SinceId" value="{CARModel>/Since}" displayFormat="dd/MM/yyyy" valueFormat="dd-MM-yyyy" placeholder="month/year"
+									change="sinceDateChanged" enabled="{= ${CARModel>/InRollingForecast} === 'Yes' }" valueState="{errorModel>/SinceValueState}"
+									valueStateText="{errorModel>/SinceValueStateText}"/>
+							</FlexBox>
+							<Button id="iconLblSinceId" class="sapUiTinyMarginBegin sapUiNoMarginEnd sapUiNoMarginTop sapUiNoMarginBottom" icon="sap-icon://hint"
+								press="iconButtonPress" type="Transparent"/>
+						</HBox>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true">
+		<uxap:blocks>
+			<form:SimpleForm editable="true" title=" " columnsL="2" layout="ResponsiveGridLayout" columnsXL="2" columnsM="2" maxContainerCols="2"
+				emptySpanS="2" emptySpanM="4" emptySpanL="4" emptySpanXL="4">
+				<core:Title/>
+				<Label text="CAR ID" wrapping="true"/>
+				<Input value="{CARModel>/Id}" editable="false"/>
+				<Label text="Date of Creation" wrapping="true"/>
+				<DatePicker id="CreatedOnId" value="{CARModel>/CreatedOn}" displayFormat="dd/MM/yyyy" editable="false"/>
+				<Label id="lblDemandNumber" text="Demand Number" required="{= ${CARModel>/CategoryId} === 5}" visible="{= ${CARModel>/CategoryId} === 5}"
+					wrapping="true"/>
+				<MaskInput id="inputDemandNumber" value="{CARModel>/SNDemandNumber}" mask="DMND9999999" valueState="{errorModel>/SNDemandNumberValueState}"
+					valueStateText="{errorModel>/SNDemandNumberValueStateText}" visible="{= ${CARModel>/CategoryId} === 5}"/>
+				<Label text="Last Modification" wrapping="true"/>
+				<DatePicker id="ChangedOnId" value="{CARModel>/ChangedOn}" displayFormat="dd/MM/yyyy" editable="false"/>
+				<Label text="Launched Date" wrapping="true"/>
+				<DatePicker id="LaunchedDateId" value="{CARModel>/LaunchedDate}" displayFormat="dd/MM/yyyy" editable="false"/>
+				<core:Title/>
+				<Label text="Status" wrapping="true"/>
+				<Input value="{CARModel>/Status}" editable="false"/>
+				<Label text="Created by" wrapping="true"/>
+				<Input value="{CARModel>/CreatedBy}" editable="false"/>
+				<Label id="lblDemandUrl" text="Demand URL" wrapping="true" required="{= ${CARModel>/CategoryId} === 5}"
+					visible="{= ${CARModel>/CategoryId} === 5}"/>
+				<Input id="inputDemandUrl" value="{CARModel>/SNDemandURL}" type="Text" visible="{= ${CARModel>/CategoryId} === 5}"
+					valueState="{errorModel>/SNDemandURLValueState}" valueStateText="{errorModel>/SNDemandURLValueStateText}"/>
+				<Label text="Modified by" wrapping="true"/>
+				<Input value="{CARModel>/ChangedBy}" editable="false"/>
+			</form:SimpleForm>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

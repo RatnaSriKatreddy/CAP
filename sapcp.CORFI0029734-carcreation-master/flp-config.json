@@ -1,0 +1,34 @@
+{
+    "application": {
+        "id": "",
+        "title": "com.danone.capcarcreation.CarCreation",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#CarCreation-Display",
+        "navigationComponentName": "com.danone.capcarcreation",
+        "intentSemanticObject": "CarCreation",
+        "intentAction": "Display",
+        "html5ApplicationName": "carcreation",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "613b406b-caa2-4392-8090-40db0732eefa-1561642429932"
+        ],
+        "contentPackages": [
+            "e222a765-7365-4700-9021-1c531f94cea1-1561641406165"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "CAR Creation",
+        "subtitle": "",
+        "searchKeywords": "CAR Creation,",
+        "displayIconUrl": "sap-icon://add-document",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

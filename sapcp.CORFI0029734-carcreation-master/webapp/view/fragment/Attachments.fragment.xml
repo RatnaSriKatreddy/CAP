@@ -1,0 +1,174 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="">
+		<uxap:blocks>
+			<VBox>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsM="2" maxContainerCols="2" labelSpanL="2">
+					<core:Title/>
+					<Label text="" wrapping="true"/>
+					<UploadCollection id="uploadCollectionOperationsTemplateId" mode="None" showSeparators="All" multiple="false"
+						items="{ path: 'dociiCapListModel>/', filters : [ { path : 'description', operator : 'Contains', value1 : 'Operations Template'} ], templateShareable: false }">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="Operations Template" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="OperationsTemplate" icon="sap-icon://download" type="Transparent" press="onDownloadDociiListFilePress"/>
+								<!--<UploadCollectionToolbarPlaceholder/>-->
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem documentId="{dociiCapListModel>objectId}" fileName="{dociiCapListModel>name}"
+								mimeType="application/{dociiCapListModel>documentType}" visibleDelete="false" visibleEdit="false"/>
+						</items>
+					</UploadCollection>
+					<core:Title/>
+					<Label text="" required="{= ${CARModel>/CategoryId} !== 5}" wrapping="true"/>
+					<UploadCollection id="uploadCollectionOperationsId" mode="None" showSeparators="All" multiple="false" change="onChangeAttachment"
+						fileDeleted="onFileDeleted" items="{ path: 'dociiOperationsModel>/', templateShareable: false }"
+						fileType="{AttachmentFileTypes>/Operations}" fileSizeExceed="fileSizeExceededForDocii" typeMissmatch="typeMismatchAttachments"
+						terminationEnabled="false">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="Operations Attachment" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="OperationsBtn" icon="sap-icon://download" type="Transparent" press="onDownloadUploadedAttachmentPress"
+									enabled="{= ${CARAttachmentsJSONModel>/CAROperationsBase64} !== undefined}"/>
+								<UploadCollectionToolbarPlaceholder/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem fileName="{dociiOperationsModel>name}" mimeType="{dociiOperationsModel>documentType}"
+								visibleDelete="{= ${CARModel>/Status} === 'Draft'}" visibleEdit="false">
+								<attributes>
+									<ObjectAttribute
+										text="{dociiOperationsModel>CreatedBy} - { path: 'dociiOperationsModel>CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd yyyy HH:mm' }}"
+										visible="{= ${dociiOperationsModel>CreatedBy} !== undefined}"/>
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+					</UploadCollection>
+					<core:Title/>
+					<Label text="" wrapping="true"/>
+					<UploadCollection id="uploadCollectionFinancialAnalysisTemplateId" mode="None" showSeparators="All" multiple="false"
+						items="{ path: 'dociiCapListModel>/', filters : [ { path : 'description', operator : 'Contains', value1 : 'Financial Analysis Template'} ], templateShareable: false }">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="CAR Financial Analysis Template" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="FinancialAnalysisTemplate" icon="sap-icon://download" type="Transparent" press="onDownloadDociiListFilePress"/>
+								<!--<UploadCollectionToolbarPlaceholder/>-->
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem documentId="{dociiCapListModel>objectId}" fileName="{dociiCapListModel>name}"
+								mimeType="application/{dociiCapListModel>documentType}" visibleDelete="false" visibleEdit="false"/>
+						</items>
+					</UploadCollection>
+					<core:Title/>
+					<Label text="" required="true" wrapping="true"/>
+					<UploadCollection id="uploadCollectionFinancialAnalysisId" mode="None" showSeparators="All" multiple="false" change="onChangeAttachment"
+						fileDeleted="onFileDeleted" items="{ path: 'dociiFinancialAnalysisModel>/', templateShareable: false }"
+						fileType="{AttachmentFileTypes>/FinancialAnalysis}" fileSizeExceed="fileSizeExceededForDocii" typeMissmatch="typeMismatchAttachments"
+						terminationEnabled="false">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="CAR Financial Analysis" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="FinancialAnalysisBtn" icon="sap-icon://download" type="Transparent" press="onDownloadUploadedAttachmentPress"
+									enabled="{= ${CARAttachmentsJSONModel>/CARFinancialAnalysisBase64} !== undefined}"></Button>
+								<UploadCollectionToolbarPlaceholder tooltip="It's possible to only upload a xlsx file"/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem fileName="{dociiFinancialAnalysisModel>name}" mimeType="{dociiFinancialAnalysisModel>documentType}"
+								visibleDelete="{= ${CARModel>/Status} === 'Draft'}" visibleEdit="false">
+								<attributes>
+									<ObjectAttribute
+										text="{dociiFinancialAnalysisModel>CreatedBy} - { path: 'dociiFinancialAnalysisModel>CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd yyyy HH:mm' }}"
+										visible="{= ${dociiFinancialAnalysisModel>CreatedBy} !== undefined}"/>
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+					</UploadCollection>
+					<core:Title/>
+					<Label text="" required="true" wrapping="true"/>
+					<UploadCollection id="uploadCollectionBusinessCaseId" mode="None" showSeparators="All" multiple="false" change="onChangeAttachment"
+						fileDeleted="onFileDeleted" items="{ path: 'dociiBusinessCaseModel>/', templateShareable: false }"
+						fileType="{AttachmentFileTypes>/BusinessCase}" fileSizeExceed="fileSizeExceededForDocii" typeMissmatch="typeMismatchAttachments"
+						terminationEnabled="false">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="Business Case" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="BusinessCaseBtn" icon="sap-icon://download" type="Transparent" press="onDownloadUploadedAttachmentPress"
+									enabled="{= ${CARAttachmentsJSONModel>/CARBusinessCaseBase64} !== undefined}"/>
+								<UploadCollectionToolbarPlaceholder tooltip="It's only possible to only upload a pptx file"/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem fileName=" {dociiBusinessCaseModel>name}" mimeType="{dociiBusinessCaseModel>documentType}"
+								visibleDelete="{= ${CARModel>/Status} === 'Draft'}" visibleEdit="false">
+								<attributes>
+									<ObjectAttribute
+										text="{dociiBusinessCaseModel>CreatedBy} - { path: 'dociiBusinessCaseModel>CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd yyyy HH:mm' }}"
+										visible="{= ${dociiBusinessCaseModel>CreatedBy} !== undefined}"/>
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+					</UploadCollection>
+					<core:Title/>
+					<Label text="" wrapping="true"/>
+					<UploadCollection id="uploadCollectionOptionalAttachmentId" showSeparators="All" multiple="false" fileDeleted="onFileDeleted"
+						change="onChangeOptionalAttachments" items="{ path: 'dociiOptionalAttachmentModel>/', templateShareable: false }"
+						sameFilenameAllowed="false" mode="None" fileSizeExceed="fileSizeExceededForDocii" terminationEnabled="false">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="Optional Attachment" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="OptionalAttachmentBtn" icon="sap-icon://download" type="Transparent" press="onDownloadUploadedAttachmentPress"
+									enabled="{= ${CARAttachmentsJSONModel>/CAROptionalAttachment0Base64} !== undefined}"/>
+								<UploadCollectionToolbarPlaceholder/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem fileName="{dociiOptionalAttachmentModel>name}" mimeType="{dociiOptionalAttachmentModel>documentType}"
+								visibleDelete="{= ${CARModel>/Status} === 'Draft'}" visibleEdit="false">
+								<attributes>
+									<ObjectAttribute
+										text="{dociiOptionalAttachmentModel>CreatedBy} - { path: 'dociiOptionalAttachmentModel>CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd yyyy HH:mm' }}"
+										visible="{= ${dociiOptionalAttachmentModel>CreatedBy} !== undefined}"/>
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+					</UploadCollection>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsM="2" maxContainerCols="2" labelSpanL="2"
+					class="sapUiLargeMarginTop">
+					<core:Title class="sapUiLargeMarginTop"/>
+					<Label text="" wrapping="true"/>
+					<UploadCollection id="uploadCollectionPreviousVersionsId" mode="None" showSeparators="All" multiple="false"
+						items="{ path: 'dociiPreviousVersionsModel>/', templateShareable: false }" sameFilenameAllowed="true">
+						<toolbar>
+							<OverflowToolbar>
+								<Title text="Previous Versions" wrapping="true"/>
+								<ToolbarSpacer/>
+								<Button id="PreviousVersionsBtn" icon="sap-icon://download" type="Transparent" press="onDownloadUploadedAttachmentPress"
+									enabled="{= ${dociiPreviousVersionsModel>0/name} !== undefined}"/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem fileName="{dociiPreviousVersionsModel>name}" mimeType="{dociiPreviousVersionsModel>documentType}"
+								visibleDelete="false" visibleEdit="false">
+								<attributes>
+									<ObjectAttribute
+										text="{dociiPreviousVersionsModel>CreatedBy} - { path: 'dociiPreviousVersionsModel>CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd yyyy HH:mm' }}"
+										visible="{= ${dociiPreviousVersionsModel>CreatedBy} !== undefined}"/>
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+					</UploadCollection>
+					<core:Title/>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>CAR Creation</title>
+		
+		<script id="sap-ui-bootstrap"
+			src="../../resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-resourceroots='{"com.danone.capcarcreation": "./"}'
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-async="true"
+			data-sap-ui-libs="sap.m" 
+			data-sap-ui-xx-supportedLanguages="en">
+		</script>
+		
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "com.danone.capcarcreation"
+					})
+				}).placeAt("content");
+			});
+		</script>
+		
+		
+	</head>
+	
+	<body class="sapUiBody" id="content">
+	</body>
+</html>

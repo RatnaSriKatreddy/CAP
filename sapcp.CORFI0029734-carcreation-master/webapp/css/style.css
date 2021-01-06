@@ -1,0 +1,205 @@
+/* Enter your custom styles here */
+
+.sapMShellCentralBox {
+    width: 100% !Important;
+    left: 0% !Important;
+    margin-left: 0px !Important;
+}
+
+.sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 100%!important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sapUxAPObjectPageSubSectionHeader {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#053e5f), to(#08598a));
+}
+
+.sapUxAPObjectPageSubSectionHeaderTitle {
+    color: #ffffff !important;
+}
+
+h5 {
+    height: 0rem !important;
+    line-height: 0rem !important;
+}
+
+.sapUxAPBlockContainer {
+    padding: 0.5rem 2rem 0rem 2rem !important;
+}
+
+.sapUxAPBlockContainerDesktop {
+    padding: 0.5rem 2rem 0rem 2rem !important;
+}
+
+.sapUxAPBlockContainerTablet {
+    padding: 1rem 1rem 0rem 1rem !important;
+}
+
+.sapUiFormResGridCont {
+    padding-bottom: 0rem !important;
+}
+
+.sapUiFormResGridCont.sapUiRespGrid.sapUiRespGridHSpace0.sapUiRespGridMedia-Std-Desktop.sapUiRespGridVSpace0 {
+    padding-bottom: 0rem !important;
+}
+
+.sapUiRespGridMedia-Std-Tablet {
+    padding: 0 !important;
+}
+
+.sapUxAPBlockContainer .sapUiFormResGrid>div.sapUiFormContainerTitle {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#__xmlview0--idIconCARForWBS,
+#__xmlview0--idIconVisibleInRadar,
+#__xmlview0--iconRadioSiteComplianceWaterId {
+    margin-top: 40%;
+    margin-left: 1rem;
+}
+
+
+/*Text in title of the ObjectPageSection*/
+
+.sapMBarChild.sapMBtn.sapMBtnBase.sapUxAPAnchorBarButton .sapMBtnContent {
+    margin-left: 1rem;
+}
+
+.sapUxAPAnchorBarButton.sapUxAPAnchorBarButtonSelected .sapMBtnContent {
+    padding-top: 0.1rem !important;
+    font-size: 1.13rem !important;
+    color: white !important;
+}
+
+.sapUxAPAnchorBarButton .sapMBtnContent {
+    padding-top: 0.1rem !important;
+    color: #cccccc !important;
+}
+
+
+/*End of text in title of the ObjectPageSection*/
+
+
+/*Make icon in title of the ObjectPageSection bigger*/
+
+.sapMBarChild.sapMBtn.sapMBtnBase.sapUxAPAnchorBarButton .sapMBtnCustomIcon.sapMBtnIcon.sapMBtnIconLeft.sapUiIcon {
+    font-size: 1.3rem;
+    color: #cccccc;
+}
+
+.sapUxAPAnchorBarButtonSelected .sapMBtnCustomIcon.sapMBtnIcon.sapMBtnIconLeft.sapUiIcon {
+    font-size: 1.3rem;
+    color: white !important;
+}
+
+
+/*End of making icon in title of the ObjectPageSection bigger*/
+
+.sapUxAPObjectPageHeaderIdentifier.sapUxAPObjectPageHeaderIdentifierForce {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#053e5f), to(#08598a));
+}
+
+.sapMIBar.sapMTB.sapMTBStandard.sapUxAPAnchorBar.sapUxAPAnchorBarUpperCase {
+    background-color: #08598a;
+}
+
+
+/*Make title white*/
+
+.sapUxAPObjectPageHeaderTitleText,
+.sapUxAPObjectPageHeaderIdentifierTitle {
+    color: white !important;
+}
+
+.sapUxAPAnchorBar.sapUxAPAnchorBarScrollRight .anchorBarArrowRight,
+html[dir=rtl] .sapUxAPAnchorBar.sapUxAPAnchorBarScrollLeft .anchorBarArrowLeft {
+    background: -webkit-linear-gradient(left, rgba(0, 120, 240, 0) 0, #eff4f900 25%, #eff4f900 100%) !important;
+}
+
+.sapUxAPAnchorBar.sapUxAPAnchorBarScrollLeft .anchorBarArrowLeft,
+html[dir=rtl] .sapUxAPAnchorBar.sapUxAPAnchorBarScrollLeft .anchorBarArrowLeft {
+    background: -webkit-linear-gradient(left, rgba(0, 120, 240, 0) 0, #eff4f900 25%, #eff4f900 100%) !important;
+}
+
+html.sap-desktop .sapUxAPHierarchicalSelect .sapMSltIcon {
+    color: #c6c8ca !important;
+}
+
+sapMShellCentralBox {
+    width: 90% !Important;
+    left: 5% !Important;
+    margin-left: 0px !Important;
+}
+
+.sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 90%!important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sapUxAPBlockContainer .sapUxAPBlockContainerDesktop {
+    margin-bottom: 0rem !important;
+}
+
+.sapUxAPBlockContainerDesktop .sapUiFormResGrid>div {
+    padding: 0 !important;
+}
+
+.customMarginMatthijs {
+    /*margin-top: -50px !important;*/
+}
+
+.errorValueStateButton .sapMBtnInner {
+    border: 2px solid #ee0000;
+}
+
+.sapUiFormResGrid>div {
+    padding: 0.75rem 0.75rem 0rem 0.75rem !important;
+    box-sizing: border-box;
+}
+
+.sapUxAPBlockContainerDesktop .sapUiFormResGrid>div {
+    padding: 0.75rem 0.75rem 0rem 0.75rem !important;
+}
+
+
+/*Delete empty list item in attachments*/
+
+li[id*='nodata'] {
+    display: none;
+}
+
+
+/*One Pager Preview*/
+
+.onePagerFragment >* .sapMLIB {
+    border: 1px solid #e5e5e5;
+}
+
+.sapUiBlockLayoutSizeL:not(.sapUiBlockLayoutKeepFontSize) .sapUiBlockCellContent {
+    font-size: 0rem;
+}
+
+.sapUiBlockLayoutSizeXL:not(.sapUiBlockLayoutKeepFontSize) .sapUiBlockCellContent {
+    font-size: 0rem;
+}
+
+.deleteMarginTop {
+    margin-top: -1rem !important;
+}
+
+
+/*To make the h6 (core:Title control) not visible*/
+
+.sapUiSizeCompact .sapUiFormContainerTitle>.sapUiFormTitle {
+    height: 1px;
+    overflow-y: hidden;
+    line-height: 2rem;
+    padding: 200px 0;
+    max-height: 1px;
+    /* box-sizing: content-box; */
+    display: inline;
+}

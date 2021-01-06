@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<FlexBox width="100%" justifyContent="Center">
+		<Label text="Sales should be completed in Volumes (K Tons or '000 Liters)" class="sapUiSmallMarginBottom"/>
+	</FlexBox>
+	<Table class="sapUiSizeCompact" items="{InvestmentJSONModel>/}">
+		<columns>
+			<Column hAlign="End" width="10rem">
+				<Text text=""/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y1"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y2"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y3"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y4"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y5"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y6"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y7"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Label text="{InvestmentJSONModel>Name}" design="Bold" required="true" wrapping="true"/>
+					<Input value="{InvestmentJSONModel>Y1}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY1ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY1ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY1ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY1ValueStateText} : '' }"/>
+					<Input value="{InvestmentJSONModel>Y2}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY2ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY2ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY2ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY2ValueStateText} : '' }"/>
+					<Input value="{InvestmentJSONModel>Y3}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY3ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY3ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY3ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY3ValueStateText} : '' }"/>
+					<Input value="{InvestmentJSONModel>Y4}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY4ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY4ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY4ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY4ValueStateText} : '' }"/>
+					<Input value="{InvestmentJSONModel>Y5}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY5ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY5ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY5ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY5ValueStateText} : '' }"/>
+					<Input value="{InvestmentJSONModel>Y6}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY6ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY6ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY6ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY6ValueStateText} : '' }"/>
+					<Input value="{InvestmentJSONModel>Y7}" liveChange="onLiveChangeInputInvestmentTable" type="{= ${InvestmentJSONModel>type}}"
+						valueState="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY7ValueState} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY7ValueState} : 'None' }"
+						valueStateText="{= ${InvestmentJSONModel>Name}.includes('Market share without project') ? ${errorModelInvestment>/MarketShareWithoutInvestmentY7ValueStateText} : ${InvestmentJSONModel>Name}.includes('Market share with project') ? ${errorModelInvestment>/MarketShareWithInvestmentY7ValueStateText} : '' }"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	<FlexBox width="100%" justifyContent="Center">
+		<Label required="true" text="Please complete all the fields in order to generate the graph" class="sapUiSmallMarginTop"/>
+	</FlexBox>
+</core:FragmentDefinition>

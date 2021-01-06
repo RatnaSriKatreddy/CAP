@@ -1,0 +1,122 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Financial KPIs" columnsM="2" maxContainerCols="2" emptySpanS="3"
+			emptySpanM="4" emptySpanL="4" emptySpanXL="4" labelSpanS="4">
+			<form:content>
+				<core:Title/>
+				<Label text="CBU ROIC Before (%)" required="true" wrapping="true"/>
+				<Input id="idInputCbuRoicBefore" value="{CARKPIModel>/ROICBefore}" showValueHelp="true" type="Text"
+					valueState="{errorModel>/ROICBeforeValueState}" valueStateText="{errorModel>/ROICBeforeValueStateText}"
+					liveChange="onLiveChangeInputROICBefore"/>
+				<Label text="WACC (%)" wrapping="true"
+					visible="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"/>
+				<Input id="idInputWacc" showValueHelp="true" editable="false" type="Text"
+					visible="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"/>
+				<Label id="lblFiveYearNPVId" text="7-years NPV (K-LC)" required="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}"
+					visible="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}" wrapping="true"/>
+				<Input id="idInputFiveYearNpv" value="{CARKPIModel>/NPVLC}" showValueHelp="true" type="Text"
+					visible="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}" valueState="{errorModel>/NPVLCValueState}"
+					valueStateText="{errorModel>/NPVLCValueStateText}" liveChange="onLiveChangeInputDecimal"/>
+				<Label id="lblIRRId" text="IRR (%)" wrapping="true"
+					visible="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"/>
+				<Input id="idInputIRR" value="{CARKPIModel>/IRR}" showValueHelp="true"
+					visible="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}" type="Text"
+					valueState="{errorModel>/IRRValueState}" valueStateText="{errorModel>/IRRValueStateText}" liveChange="onLiveChangeInputIRR"/>
+				<Label id="lblFinCostId" text="Financial Cost (k-LC)" visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" wrapping="true"/>
+				<Input id="inputFinCostId" value="{CARKPIModel>/FinancialCost}"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" type="Text"
+					valueState="{errorModel>/FinancialCostValueState}" valueStateText="{errorModel>/FinancialCostValueStateText}"
+					liveChange="onLiveChangeInputFinancialCost"/>
+				<Label id="lblYearsContractId" text="Years of Contract"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" wrapping="true"/>
+				<Input id="inputYearsContractId" value="{CARKPIModel>/YearsOfContract}"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" type="Text"
+					valueState="{errorModel>/YearsOfContractValueState}" valueStateText="{errorModel>/YearsOfContractValueStateText}"
+					liveChange="onLiveChangeInputYearsOfContract"/>
+				<core:Title/>
+				<Label text="CBU ROIC After (%)" required="true" wrapping="true"/>
+				<Input id="idInputCbuRoicAfter" value="{CARKPIModel>/ROICAfter}" showValueHelp="true" type="Text"
+					valueState="{errorModel>/ROICAfterValueState}" valueStateText="{errorModel>/ROICAfterValueStateText}"
+					liveChange="onLiveChangeInputROICAfter"/>
+				<Label id="lblPaybackMonthsId" text="Payback (in months)" visible="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}" wrapping="true"/>
+				<Input id="inputPaybackMonthsId" value="{CARKPIModel>/Payback}" type="Text"
+					visible="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 1}" valueState="{errorModel>/PaybackValueState}"
+					valueStateText="{errorModel>/PaybackValueStateText}" liveChange="onLiveChangeInputPayback"/>
+				<Label id="lblInterestRateId" text="Annual interest rate (%)"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" wrapping="true"/>
+				<Input id="inputInterestRateId" value="{CARKPIModel>/InterestRate}"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" type="Text"
+					valueState="{errorModel>/InterestRateValueState}" valueStateText="{errorModel>/InterestRateValueStateText}"
+					liveChange="onLiveChangeInputInterestRate"/>
+				<Label id="lblDebtPositionId" text="Debt related to lease (at the beginning of the lease) (k-LC)"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" wrapping="true"/>
+				<Input id="inputDebtPositionId" value="{CARKPIModel>/Debt}" maxLength="30" showValueHelp="true"
+					visible="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}"
+					required="{= ${CARModel>/FinancingTypeId} === 2 || ${CARModel>/FinancingTypeId} === 3}" type="Text"
+					valueState="{errorModel>/DebtValueState}" valueStateText="{errorModel>/DebtValueStateText}" liveChange="onLiveChangeInputDecimal"/>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Operational KPIs" columnsM="2" maxContainerCols="2" emptySpanS="3"
+			emptySpanM="4" emptySpanL="4" emptySpanXL="4" labelSpanS="4">
+			<form:content>
+				<core:Title/>
+				<Label text="Site/Network OU% before project implementation" wrapping="true" visible="{= ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 1}"/>
+				<Input id="inputPlantOUBeforeId" value="{CARKPIModel>/PlantOUBefore}" visible="{= ${CARModel>/CategoryId} === 1}" showValueHelp="true"
+					required="{= ${CARModel>/CategoryId} === 1}" type="Text" valueState="{errorModel>/PlantOUBeforeValueState}"
+					valueStateText="{errorModel>/PlantOUBeforeValueStateText}" liveChange="onLiveChangeInputPlantOUBefore"/>
+				<Label text="Site/Network OE% before project implementation" wrapping="true" visible="{= ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 1}"/>
+				<Input id="inputPlantOEBeforeId" value="{CARKPIModel>/PlantOEBefore}" visible="{= ${CARModel>/CategoryId} === 1}" showValueHelp="true"
+					required="{= ${CARModel>/CategoryId} === 1}" type="Text" valueState="{errorModel>/PlantOEBeforeValueState}"
+					valueStateText="{errorModel>/PlantOEBeforeValueStateText}" liveChange="onLiveChangeInputPlantOEBefore"/>
+				<Label text="% of negotiated offer" wrapping="true"/>
+				<Input id="inputNegotiatedOfferId" value="{CARKPIModel>/NegotiatedOffer}" type="Text" showValueHelp="true"
+					valueState="{errorModel>/NegotiatedOfferValueState}" valueStateText="{errorModel>/NegotiatedOfferValueStateText}"
+					liveChange="onLiveChangeInputNegotiatedOffer"/>
+				<core:Title/>
+				<Label text="Site/Network OU% after project implementation" visible="{= ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 1}" wrapping="true"/>
+				<Input id="inputPlantOUAfterId" value="{CARKPIModel>/PlantOUAfter}" visible="{= ${CARModel>/CategoryId} === 1}" showValueHelp="true"
+					required="{= ${CARModel>/CategoryId} === 1}" type="Text" valueState="{errorModel>/PlantOUAfterValueState}"
+					valueStateText="{errorModel>/PlantOUAfterValueStateText}" liveChange="onLiveChangeInputPlantOUAfter"/>
+				<Label text="Site/Network OE% after project implementation" visible="{= ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 1}" wrapping="true"/>
+				<Input id="inputPlantOEAfterId" value="{CARKPIModel>/PlantOEAfter}" visible="{= ${CARModel>/CategoryId} === 1}" showValueHelp="true"
+					required="{= ${CARModel>/CategoryId} === 1}" type="Text" valueState="{errorModel>/PlantOEAfterValueState}"
+					valueStateText="{errorModel>/PlantOEAfterValueStateText}" liveChange="onLiveChangeInputPlantOEAfter"/>
+				<Label id="lblAdditionalCapacityId" text="Additional Capacity (K Tons)" visible="{= ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 1}" wrapping="true"/>
+				<Input id="inputAdditionalCapacityId" value="{CARKPIModel>/AdditionalCapacity}" visible="{= ${CARModel>/CategoryId} === 1}"
+					required="{= ${CARModel>/CategoryId} === 1}" type="Text" valueState="{errorModel>/AdditionalCapacityValueState}"
+					valueStateText="{errorModel>/AdditionalCapacityValueStateText}" liveChange="onLiveChangeInputDecimal" showValueHelp="true"/>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" labelSpanS="12" labelSpanM="2" labelSpanL="2" labelSpanXL="2"
+			class="sapUiSmallMarginTop">
+			<form:content >
+				<Label text="Packaging &#38; formula flexibility" wrapping="true"/>
+				<HBox width="100%">
+					<FlexBox width="100%" direction="Column">
+						<TextArea id="inputPackAndFormulaFlex" value="{CARKPIModel>/PackAndFormulaFlex}" showExceededText="false" maxLength="1000" rows="5"
+							width="100%" growing="true" valueState="{errorModel>/PackAndFormulaFlexValueState}"
+							valueStateText="{errorModel>/PackAndFormulaFlexValueStateText}" liveChange="onLiveChangeInput"/>
+					</FlexBox>
+					<Button id="iconLblPackagingId" class="sapUiTinyMarginBegin sapUiNoMarginEnd sapUiNoMarginTop sapUiNoMarginBottom" icon="sap-icon://hint"
+						press="iconButtonPress" type="Transparent"/>
+				</HBox>
+			</form:content>
+		</form:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

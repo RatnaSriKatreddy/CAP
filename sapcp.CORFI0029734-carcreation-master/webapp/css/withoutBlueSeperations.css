@@ -1,0 +1,131 @@
+/* Enter your custom styles here */
+
+.sapMShellCentralBox {
+    width: 100% !Important;
+    left: 0% !Important;
+    margin-left: 0px !Important;
+}
+
+.sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 100%!important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/*.sapUxAPObjectPageSubSectionHeader {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#053e5f), to(#08598a));
+}
+
+
+.sapUxAPObjectPageSubSectionHeaderTitle {
+    color: #ffffff !important;
+}
+
+.sapUiFormM .sapUiFormContainerTitle>.sapUiFormTitle {
+    height: 0rem;
+    line-height: 3rem;
+}*/
+
+#__title0,
+#__title1,
+#__title2,
+#__title3,
+#__title4,
+#__title5,
+#__title6,
+#__title7,
+#__title8,
+#__title9,
+#__title10,
+#__title11,
+#__title12,
+#__title13,
+#__title35,
+#__title37 {
+    height: 0rem !Important;
+    line-height: 0rem !Important;
+}
+
+.sapUiFormResGridCont.sapUiRespGrid.sapUiRespGridHSpace0.sapUiRespGridMedia-Std-Desktop.sapUiRespGridVSpace0 {
+    padding-bottom: 0rem !Important;
+}
+
+#__xmlview0--idIconVisibleInRadar,
+#__xmlview0--iconRadioSiteComplianceWaterId {
+    margin-top: 40%;
+    margin-left: 1rem;
+}
+
+.sapMBarChild.sapMBtn.sapMBtnBase.sapUxAPAnchorBarButton .sapMBtnContent {
+    margin-left: 0.7rem;
+    /*color: #cccccc;*/
+}
+
+.sapUxAPAnchorBarButtonSelected .sapMBtnContent {
+    font-size: 1.3rem;
+    /*color: white !important;*/
+}
+
+.sapMBarChild.sapMBtn.sapMBtnBase.sapUxAPAnchorBarButton .sapMBtnCustomIcon.sapMBtnIcon.sapMBtnIconLeft.sapUiIcon {
+    font-size: 1.3rem;
+    /*color: #cccccc;*/
+}
+
+.sapUxAPAnchorBarButtonSelected .sapMBtnCustomIcon.sapMBtnIcon.sapMBtnIconLeft.sapUiIcon {
+    font-size: 1.3rem;
+    /*color: white;*/
+}
+
+
+/*.sapUxAPObjectPageHeaderIdentifier.sapUxAPObjectPageHeaderIdentifierForce {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#053e5f), to(#08598a));
+}
+
+
+.sapMIBar.sapMTB.sapMTBStandard.sapUxAPAnchorBar.sapUxAPAnchorBarUpperCase {
+    background-color: #08598a;
+}
+
+
+h1 {
+    color: white !important;
+}
+
+
+.sapUxAPAnchorBar.sapUxAPAnchorBarScrollRight .anchorBarArrowRight,
+html[dir=rtl] .sapUxAPAnchorBar.sapUxAPAnchorBarScrollLeft .anchorBarArrowLeft {
+    background: -webkit-linear-gradient(left, rgba(0, 120, 240, 0) 0, #eff4f900 25%, #eff4f900 100%) !important;
+}
+
+
+.sapUxAPAnchorBar.sapUxAPAnchorBarScrollLeft .anchorBarArrowLeft,
+html[dir=rtl] .sapUxAPAnchorBar.sapUxAPAnchorBarScrollLeft .anchorBarArrowLeft {
+    background: -webkit-linear-gradient(left, rgba(0, 120, 240, 0) 0, #eff4f900 25%, #eff4f900 100%) !important;
+}*/
+
+html.sap-desktop .sapUxAPHierarchicalSelect .sapMSltIcon {
+    color: #c6c8ca !important;
+}
+
+sapMShellCentralBox {
+    width: 90% !Important;
+    left: 5% !Important;
+    margin-left: 0px !Important;
+}
+
+.sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 90%!important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/*To fill the padding with a color!*/
+
+
+/*.sapUxAPObjectPageSubSection.ui-helper-clearfix.sapUxAPObjectPageSubSectionPromoted{
+    padding: 35px;
+    background-image: linear-gradient(to bottom, snow 0%, snow 100%), linear-gradient(to bottom, grey 0%, grey 100%);
+    background-clip: content-box, padding-box;
+}*/

@@ -1,0 +1,84 @@
+<mvc:View controllerName="com.danone.capcarcreation.controller.Main" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	displayBlock="true" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:core="sap.ui.core">
+	<App id="idAppControl">
+		<pages>
+			<Page showHeader="false" showFooter="true">
+				<content>
+					<uxap:ObjectPageLayout useIconTabBar="true" showAnchorBarPopover="false" id="oplId">
+						<uxap:headerTitle>
+							<uxap:ObjectPageHeader objectTitle="CAR Creation" objectImageURI="{RandomModel>/picture}" objectImageShape="Circle"
+								isObjectIconAlwaysVisible="true" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" isActionAreaAlwaysVisible="true"
+								showPlaceholder="true">
+								<uxap:actions>
+									<uxap:ObjectPageHeaderActionButton press="onLaunchPress" text="Launch" type="Accept" hideText="false"
+										visible="{= ${CARModel>/Status} !== 'Launched'}"/>
+									<uxap:ObjectPageHeaderActionButton press="onSavePress" type="Emphasized" text="Save as Draft" hideText="false" hideIcon="true"
+										visible="{= ${CARModel>/Status} !== 'Launched'}"/>
+									<uxap:ObjectPageHeaderActionButton press="onBackPress" type="Emphasized" text="Back" hideText="false" hideIcon="true"/>
+									<uxap:ObjectPageHeaderActionButton type="Reject" text="Delete" hideText="false" hideIcon="true" press="onDeletePress"
+										visible="{= ${CARModel>/Status} !== 'Launched'}"/>
+								</uxap:actions>
+							</uxap:ObjectPageHeader>
+						</uxap:headerTitle>
+						<uxap:sections>
+							<uxap:ObjectPageSection title="General Information" class="sapUiTinyMargin sapUiNoContentPadding">
+								<uxap:customAnchorBarButton>
+									<Button text="General Information" icon="sap-icon://hint" class="sapUiContentPadding roundButton"/>
+									<!--<cust:ButtonWithIcon text="General Information" icon="sap-icon://hint" active="true"/>-->
+								</uxap:customAnchorBarButton>
+								<uxap:subSections>
+									<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.GeneralInfo" type="XML"/>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+							<uxap:ObjectPageSection title="Financial &#38; Operational">
+								<uxap:customAnchorBarButton>
+									<Button text="Financial &#38; Operational" icon="sap-icon://lead"/>
+									<!--<cust:ButtonWithIcon text="Financial &#38; Operational" icon="sap-icon://lead" active="false"/>-->
+								</uxap:customAnchorBarButton>
+								<uxap:subSections>
+									<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.Financial" type="XML"/>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+							<uxap:ObjectPageSection title="One Planet">
+								<uxap:customAnchorBarButton>
+									<Button text="One Planet" icon="sap-icon://e-care"/>
+									<!--<cust:ButtonWithIcon text="One Planet" icon="sap-icon://e-care" active="false"/>-->
+								</uxap:customAnchorBarButton>
+								<uxap:subSections>
+									<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.OnePlanet" type="XML"/>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+							<uxap:ObjectPageSection title="Attachments">
+								<uxap:customAnchorBarButton>
+									<Button text="Attachments" icon="sap-icon://attachment"/>
+									<!--<cust:ButtonWithIcon text="Attachments" icon="sap-icon://attachment" active="false"/>-->
+								</uxap:customAnchorBarButton>
+								<uxap:subSections>
+									<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.Attachments" type="XML"/>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+							<uxap:ObjectPageSection title="One Pager Preview">
+								<uxap:customAnchorBarButton>
+									<Button text="One Pager Preview" icon="sap-icon://activity-items"/>
+								</uxap:customAnchorBarButton>
+								<uxap:subSections>
+									<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.onePagerPreview" type="XML"/>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+							<uxap:ObjectPageSection title="Optional Comments">
+								<uxap:customAnchorBarButton>
+									<Button text="Optional Comments" icon="sap-icon://comment"/>
+									<!--<cust:ButtonWithIcon text="Optional Comments" icon="sap-icon://comment" active="false"/>-->
+								</uxap:customAnchorBarButton>
+								<uxap:subSections>
+									<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.OptionalComments" type="XML"/>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+						</uxap:sections>
+					</uxap:ObjectPageLayout>
+				</content>
+				<footer></footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

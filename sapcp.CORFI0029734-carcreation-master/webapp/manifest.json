@@ -1,0 +1,155 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "com.danone.capcarcreation",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/HANA/ZCORFI10245/SERVICES/service.xsodata",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"docii": {
+				"uri": "/api_docii",
+				"type": "JSON"
+			}
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.38.11"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.danone.capcarcreation.view.Main",
+			"type": "XML",
+			"async": true
+		},
+		"handleValidation": true,
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {
+					"lazy": true
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.danone.capcarcreation.i18n.i18n",
+					"bundleLocale": "en",
+					"fallbackLocale": "en",
+					"supportedLocales": [
+						"en"
+					]
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"metadataUrlParams": {
+						"defaultBindingMode": "TwoWay"
+					},
+					"disableHeadRequestForToken": true
+				}
+			},
+			"docii": {
+				"dataSource": "docii",
+				"preload": false,
+				"settings": {
+					"metadataUrlParams": {
+						"defaultBindingMode": "TwoWay"
+					},
+					"disableHeadRequestForToken": true
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.danone.capcarcreation.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RouteMain",
+					"pattern": "RouteMain",
+					"target": [
+						"TargetMain"
+					]
+				},
+				{
+					"name": "CARDisplay",
+					"pattern": "CarCreation-Display?CARId={CARId}",
+					"target": "CARDisplay"
+				}
+			],
+			"targets": {
+				"TargetMain": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "Main"
+				},
+				"CARDisplay": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "test"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.2.0"
+	}
+}

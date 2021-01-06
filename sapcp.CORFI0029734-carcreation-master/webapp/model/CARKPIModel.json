@@ -1,0 +1,19 @@
+{
+	"CARId": null,
+	"ROICBefore": null,
+	"ROICAfter": null,
+	"NPVLC": null,
+	"Payback": null,
+	"IRR": null,
+	"FinancialCost": null,
+	"YearsOfContract": null,
+	"InterestRate": null,
+	"Debt": "",
+	"PlantOUBefore": null,
+	"PlantOUAfter": null,
+	"PlantOEBefore": null,
+	"PlantOEAfter": null,
+	"AdditionalCapacity": null,
+	"NegotiatedOffer": null,
+	"PackAndFormulaFlex": ""
+}

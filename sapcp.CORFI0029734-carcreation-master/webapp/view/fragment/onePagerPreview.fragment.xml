@@ -1,0 +1,366 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:micro="sap.suite.ui.microchart"
+	xmlns:form="sap.ui.layout.form" xmlns:uxap="sap.uxap">
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="">
+		<uxap:blocks>
+			<VBox class="onePagerFragment" id="onePagerPreviewId">
+				<layout:VerticalLayout width="100%" class="sapUiSmallMarginTop">
+					<Title text="{CARModel>/Name}" titleStyle="H2" class="sapUiTinyMarginBegin"/>
+					<layout:BlockLayout background="Dashboard">
+						<layout:BlockLayoutRow>
+							<layout:BlockLayoutCell class="sapUiNoPaddingBegin sapUiNoPaddingEnd">
+								<VBox>
+									<layout:Grid containerQuery="true" defaultSpan="XL6 L6 M6 S12" hSpacing="2"
+										class="sapUiNoMarginBottom sapUiSmallMarginTop sapUiLargePaddingBegin sapUiLargePaddingEnd sapUiLargeMarginEnd sapUiLargeMarginBegin">
+										<HBox alignContent="Center" alignItems="Center">
+											<Label text="Financing Type:" wrapping="true" design="Bold" class="sapUiTinyMarginEnd"></Label>
+											<Text text="{RandomModel>/FinancingTypeName}"></Text>
+										</HBox>
+										<HBox alignContent="Center" alignItems="Center">
+											<Label text="WBU:" wrapping="true" design="Bold" class="sapUiTinyMarginEnd"></Label>
+											<Text text="{RandomModel>/WWBUName}"></Text>
+										</HBox>
+									</layout:Grid>
+									<layout:Grid containerQuery="true" defaultSpan="XL6 L6 M6 S12" hSpacing="2"
+										class="sapUiNoMarginBottom sapUiLargePaddingBegin sapUiLargePaddingEnd sapUiLargeMarginEnd sapUiLargeMarginBegin">
+										<HBox alignItems="Center" alignContent="Center">
+											<Label text="Category:" wrapping="true" design="Bold" class="sapUiTinyMarginEnd"></Label>
+											<Text text="{RandomModel>/CategoryName}"></Text>
+										</HBox>
+										<HBox alignItems="Center" alignContent="Center">
+											<Label text="CBU:" wrapping="true" design="Bold" class="sapUiTinyMarginEnd"></Label>
+											<Text text="{RandomModel>/CBUName}"></Text>
+										</HBox>
+									</layout:Grid>
+								</VBox>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+					</layout:BlockLayout>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout width="100%" class="sapUiSmallMarginTop">
+					<Title text="Business Objectives" titleStyle="H2" class="sapUiTinyMarginBegin"/>
+					<layout:BlockLayout background="Dashboard">
+						<layout:BlockLayoutRow>
+							<layout:BlockLayoutCell title="">
+								<Text text="{CARModel>/BusinessObj}" wrapping="true"/>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+						<layout:BlockLayoutRow>
+							<layout:BlockLayoutCell width="65%" class="sapUiNoContentPadding" visible="{=${CARModel>/CategoryId} === 1}">
+								<VBox>
+									<VBox class="sapUiTinyMargin" visible="{=${CARModel>/SubCategoryId} === 7}">
+										<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.TopLineGraph" type="XML"/>
+									</VBox>
+									<VBox class="sapUiTinyMargin" visible="{=${CARModel>/SubCategoryId} === 8}">
+										<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.InvestmentGraph" type="XML"/>
+									</VBox>
+								</VBox>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="35%">
+								<VBox width="100%" height="100%" justifyContent="Center" alignContent="Center" visible="{=${CARModel>/CategoryId} === 1}">
+									<Image id="onePageCARImage" width="100%" visible="true" src="{RandomModel>/onePagerPicture}"/>
+								</VBox>
+								<VBox width="25%" height="100%" visible="{=${CARModel>/CategoryId} !== 1}">
+									<Image id="onePageCARImage1" width="100%" visible="true" src="{RandomModel>/onePagerPicture}"/>
+								</VBox>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+					</layout:BlockLayout>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout width="100%" class="sapUiSmallMarginTop">
+					<Title text="Financial and Operational KPIs" titleStyle="H2" class="sapUiTinyMarginBegin"/>
+					<layout:BlockLayout background="Dashboard">
+						<layout:BlockLayoutRow>
+							<layout:BlockLayoutCell width="1" class="sapUiResponsiveContentPadding">
+								<FlexBox direction="Column" alignItems="Stretch" justifyContent="Start" class="sapUiLargeMarginTop">
+									<items>
+										<VBox class="sapUiSmallMarginBottom sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiLargeMarginTop" alignItems="Start">
+											<Title text="CAR Total Amount" wrapping="true" level="H4" titleStyle="H5"/>
+											<NumericContent scale="M" id="carTotalAmount" value="{path: 'CARModel>/TotalAmountLC', formatter: '.formatter.totalAmountMEuro'}"
+												valueColor="Neutral" indicator="None" withMargin="false"/>
+											<Title text="LC" titleStyle="H4"/>
+										</VBox>
+										<VBox class="sapUiSmallMargin" justifyContent="Start">
+											<Title text="Payback" wrapping="true" titleStyle="H5"/>
+											<NumericContent value="{CARKPIModel>/Payback}" valueColor="Neutral" indicator="None" withMargin="false"/>
+											<Title text="Months"/>
+										</VBox>
+										<VBox justifyContent="Start" alignContent="Start" class="sapUiSmallMargin">
+											<Title text="Green Payback" wrapping="true" titleStyle="H5"/>
+											<NumericContent value="{CAROnePlanetModel>/GreenPaybackMonths}" withMargin="false"/>
+											<Title text="Months"/>
+										</VBox>
+									</items>
+								</FlexBox>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell width="4" title="Incremental Business">
+								<Table alternateRowColors="true" items="{incrementalBusinessJSONModel>/}">
+									<columns>
+										<Column hAlign="End">
+											<Text text=""/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y1"/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y2"/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y3"/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y4"/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y5"/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y6"/>
+										</Column>
+										<Column>
+											<Label design="Bold" text="Y7"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Label text="{incrementalBusinessJSONModel>Name}" design="Bold" wrapping="true"/>
+												<Text text="{incrementalBusinessJSONModel>Y1}"/>
+												<Text text="{incrementalBusinessJSONModel>Y2}"/>
+												<Text text="{incrementalBusinessJSONModel>Y3}"/>
+												<Text text="{incrementalBusinessJSONModel>Y4}"/>
+												<Text text="{incrementalBusinessJSONModel>Y5}"/>
+												<Text text="{incrementalBusinessJSONModel>Y6}"/>
+												<Text text="{incrementalBusinessJSONModel>Y7}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+					</layout:BlockLayout>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout width="100%" class="sapUiSmallMarginTop">
+					<layout:BlockLayout background="Dashboard">
+						<layout:BlockLayoutRow visible="{= ${CARModel>/CategoryId} === 1}">
+							<layout:BlockLayoutCell title="Asset Efficiency">
+								<layout:content>
+									<layout:VerticalLayout width="100%">
+										<layout:BlockLayout>
+											<layout:BlockLayoutRow>
+												<layout:BlockLayoutCell class="sapUiNoContentPadding">
+													<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="">
+														<Label text="Site/Network OU% before project implementation" wrapping="true" design="Bold"/>
+														<Text text="{CARKPIModel>/PlantOUBefore}"/>
+													</form:SimpleForm>
+												</layout:BlockLayoutCell>
+												<layout:BlockLayoutCell class="sapUiNoContentPadding">
+													<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="">
+														<Label text="Site/Network OU% after project implementation" wrapping="true" design="Bold"/>
+														<Text text="{CARKPIModel>/PlantOUAfter}"/>
+													</form:SimpleForm>
+												</layout:BlockLayoutCell>
+												<layout:BlockLayoutCell class="sapUiNoContentPadding">
+													<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="">
+														<Label text="Site/Network OE% before project implementation" wrapping="true" design="Bold"/>
+														<Text text="{CARKPIModel>/PlantOEBefore}"/>
+													</form:SimpleForm>
+												</layout:BlockLayoutCell>
+												<layout:BlockLayoutCell class="sapUiNoContentPadding">
+													<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="">
+														<Label text="Site/Network OE% after project implementation" wrapping="true" design="Bold"/>
+														<Text text="{CARKPIModel>/PlantOEAfter}"/>
+													</form:SimpleForm>
+												</layout:BlockLayoutCell>
+											</layout:BlockLayoutRow>
+										</layout:BlockLayout>
+									</layout:VerticalLayout>
+								</layout:content>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+					</layout:BlockLayout>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout width="100%" class="sapUiSmallMarginTop">
+					<Title text="Strategic Aspect" titleStyle="H2" class="sapUiTinyMarginBegin"/>
+					<layout:BlockLayout background="Dashboard">
+						<layout:BlockLayoutRow>
+							<layout:BlockLayoutCell width="100%" title="Planet">
+								<!--<Title text="Planet" titleStyle="H2" class="sapUiTinyMargin"/>-->
+								<layout:content>
+									<layout:VerticalLayout width="100%" class="gridWrapper">
+										<layout:Grid containerQuery="true" hSpacing="0" defaultSpan="XL2 L2 M3 S4" defaultIndent="L0 M0 S0">
+											<VBox class="sapUiTinyMargin">
+												<HBox>
+													<!--<core:Icon src="sap-icon://jam" size="20px" class="sapUiTinyMarginEnd"/>-->
+													<Label design="Bold" text="CO2 Emission Var"></Label>
+												</HBox>
+												<ObjectAttribute text="kTn/year (site scope)"></ObjectAttribute>
+												<!--<micro:BulletMicroChart size="S" targetValue="0">-->
+												<!--	<micro:actual>-->
+												<!--		<micro:BulletMicroChartData value="{path : 'CAROnePlanetModel>/SiteAfterProjectY1CO2', formatter: '.formatter.planetChartValues'}"-->
+												<!--			color="{path : 'CAROnePlanetModel>/SiteAfterProjectY1CO2', formatter: '.formatter.planetChartColorValues'}"/>-->
+												<!--	</micro:actual>-->
+												<!--</micro:BulletMicroChart>-->
+												<micro:ComparisonMicroChart size="S" colorPalette="sapUiChartPaletteQualitativeHue1, sapUiChartPaletteQualitativeHue2">
+													<micro:data>
+														<micro:ComparisonMicroChartData title="Before" value="{path : 'RandomModel>/SiteY1CO2', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'RandomModel>/SiteY1CO2', formatter: '.formatter.planetChartColorValues'}"/>
+														<micro:ComparisonMicroChartData title="After"
+															value="{path : 'RandomModel>/SiteAfterProjectY1CO2', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'RandomModel>/SiteAfterProjectY1CO2', formatter: '.formatter.planetChartColorValues'}"/>
+													</micro:data>
+												</micro:ComparisonMicroChart>
+												<NumericContent class="sapUiSmallMarginBeginEnd"
+													value="{parts: ['RandomModel>/SiteAfterProjectY1CO2', 'RandomModel>/SiteY1CO2'], formatter: '.formatter.planetValues'}" scale="%"
+													valueColor="{parts: ['RandomModel>/SiteAfterProjectY1CO2', 'RandomModel>/SiteY1CO2'], formatter: '.formatter.planetValuesColor'}"
+													indicator="{parts: ['RandomModel>/SiteAfterProjectY1CO2', 'RandomModel>/SiteY1CO2'], formatter: '.formatter.planetValuesIndicator'}"
+													withMargin="false"/>
+												<!--<Text text="Variation of CO2 &#xA; After project"/>-->
+											</VBox>
+											<VBox class="sapUiTinyMargin">
+												<HBox>
+													<!--<core:Icon src="sap-icon://tag-cloud-chart" size="20px" class="sapUiTinyMarginEnd"/>-->
+													<Label design="Bold" text="CO2 Intensity Var"></Label>
+												</HBox>
+												<ObjectAttribute text="C02/Tn"></ObjectAttribute>
+												<!--<micro:BulletMicroChart size="S" targetValue="0">-->
+												<!--	<micro:actual>-->
+												<!--		<micro:BulletMicroChartData value="{path : 'CAROnePlanetModel>/SiteProjectInclCO2', formatter: '.formatter.planetChartValues'}"-->
+												<!--			color="{path : 'CAROnePlanetModel>/SiteProjectInclCO2', formatter: '.formatter.planetChartColorValues'}"/>-->
+												<!--	</micro:actual>-->
+												<!--</micro:BulletMicroChart>-->
+												<micro:ComparisonMicroChart size="S" colorPalette="sapUiChartPaletteQualitativeHue1, sapUiChartPaletteQualitativeHue2">
+													<micro:data>
+														<micro:ComparisonMicroChartData title="Before" value="{path : 'CAROnePlanetModel>/SiteCO2', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'CAROnePlanetModel>/SiteCO2', formatter: '.formatter.planetChartColorValues'}"/>
+														<micro:ComparisonMicroChartData title="After"
+															value="{path : 'CAROnePlanetModel>/SiteProjectInclCO2', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'CAROnePlanetModel>/SiteProjectInclCO2', formatter: '.formatter.planetChartColorValues'}"/>
+													</micro:data>
+												</micro:ComparisonMicroChart>
+												<NumericContent class="sapUiSmallMarginBeginEnd"
+													value="{parts: ['CAROnePlanetModel>/SiteProjectInclCO2', 'CAROnePlanetModel>/SiteCO2'], formatter: '.formatter.planetValues'}" scale="%"
+													valueColor="{parts: ['CAROnePlanetModel>/SiteProjectInclCO2', 'CAROnePlanetModel>/SiteCO2'], formatter: '.formatter.planetValuesColor'}"
+													indicator="{parts: ['CAROnePlanetModel>/SiteProjectInclCO2', 'CAROnePlanetModel>/SiteCO2'], formatter: '.formatter.planetValuesIndicator'}"
+													withMargin="false"/>
+												<!--<Text text="Variation of CO2"/>-->
+											</VBox>
+											<VBox class="sapUiTinyMargin">
+												<HBox>
+													<!--<core:Icon src="sap-icon://lightbulb" size="20px" class="sapUiTinyMarginEnd"/>-->
+													<Label design="Bold" text="Energy Consumption"></Label>
+												</HBox>
+												<ObjectAttribute text="kwh/Tn (site proj incl.)"></ObjectAttribute>
+												<micro:ComparisonMicroChart size="S" colorPalette="sapUiChartPaletteQualitativeHue1, sapUiChartPaletteQualitativeHue2">
+													<micro:data>
+														<micro:ComparisonMicroChartData title="Before"
+															value="{path : 'CAROnePlanetModel>/CurrentEnergyConsumption', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'CAROnePlanetModel>/CurrentEnergyConsumption', formatter: '.formatter.planetChartColorValues'}"/>
+														<micro:ComparisonMicroChartData title="After"
+															value="{path : 'CAROnePlanetModel>/SiteProjectEnergyConsumption', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'CAROnePlanetModel>/SiteProjectEnergyConsumption', formatter: '.formatter.planetChartColorValues'}"/>
+													</micro:data>
+												</micro:ComparisonMicroChart>
+												<NumericContent class="sapUiSmallMarginBeginEnd"
+													value="{parts: ['CAROnePlanetModel>/SiteProjectEnergyConsumption', 'CAROnePlanetModel>/CurrentEnergyConsumption'], formatter: '.formatter.planetValues'}"
+													scale="%"
+													valueColor="{parts: ['CAROnePlanetModel>/SiteProjectEnergyConsumption', 'CAROnePlanetModel>/CurrentEnergyConsumption'], formatter: '.formatter.planetValuesColor'}"
+													indicator="{parts: ['CAROnePlanetModel>/SiteProjectEnergyConsumption', 'CAROnePlanetModel>/CurrentEnergyConsumption'], formatter: '.formatter.planetValuesIndicator'}"
+													withMargin="false"/>
+												<!--<Text text="Variation of Energy Consumption &#xA; after project"/>-->
+											</VBox>
+											<VBox class="sapUiTinyMargin">
+												<HBox>
+													<!--<core:Icon src="sap-icon://pool" size="20px" class="sapUiTinyMarginEnd"/>-->
+													<Label design="Bold" text="Water Consumption"></Label>
+												</HBox>
+												<ObjectAttribute text="m3/Tn (site proj incl.)"></ObjectAttribute>
+												<!--<micro:BulletMicroChart size="S" targetValue="0">-->
+												<!--	<micro:actual>-->
+												<!--		<micro:BulletMicroChartData value="{path : 'CAROnePlanetModel>/SiteProjectInclWater', formatter: '.formatter.planetChartValues'}"-->
+												<!--			color="{path : 'CAROnePlanetModel>/SiteProjectInclWater', formatter: '.formatter.planetChartColorValues'}"/>-->
+												<!--	</micro:actual>-->
+												<!--</micro:BulletMicroChart>-->
+												<micro:ComparisonMicroChart size="S" colorPalette="sapUiChartPaletteQualitativeHue1, sapUiChartPaletteQualitativeHue2">
+													<micro:data>
+														<micro:ComparisonMicroChartData title="Before" value="{path : 'CAROnePlanetModel>/SiteWater', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'CAROnePlanetModel>/SiteWater', formatter: '.formatter.planetChartColorValues'}"/>
+														<micro:ComparisonMicroChartData title="After"
+															value="{path : 'CAROnePlanetModel>/SiteProjectInclWater', formatter: '.formatter.planetChartValues'}"
+															color="{path : 'CAROnePlanetModel>/SiteProjectInclWater', formatter: '.formatter.planetChartColorValues'}"/>
+													</micro:data>
+												</micro:ComparisonMicroChart>
+												<NumericContent class="sapUiSmallMarginBeginEnd"
+													value="{parts: ['CAROnePlanetModel>/SiteProjectInclWater', 'CAROnePlanetModel>/SiteWater'], formatter: '.formatter.planetValues'}" scale="%"
+													valueColor="{parts: ['CAROnePlanetModel>/SiteProjectInclWater', 'CAROnePlanetModel>/SiteWater'], formatter: '.formatter.planetValuesColor'}"
+													indicator="{parts: ['CAROnePlanetModel>/SiteProjectInclWater', 'CAROnePlanetModel>/SiteWater'], formatter: '.formatter.planetValuesIndicator'}"
+													withMargin="false"/>
+												<!--<Text text="Variation of Water Consumption &#xA; After project"/>-->
+											</VBox>
+											<VBox class="sapUiTinyMargin">
+												<Label design="Bold" text=" % Recyclable" wrapping="true"></Label>
+												<NumericContent class="sapUiSmallMarginBeginEnd" value="{CAROnePlanetModel>/AfterProjectPlasticRecyclable} %" withMargin="false"/>
+											</VBox>
+											<VBox class="sapUiTinyMargin">
+												<Label design="Bold" text="% Green Energy" wrapping="true"></Label>
+												<NumericContent class="sapUiSmallMarginBeginEnd" value="{CAROnePlanetModel>/AfterGreenEnergy} %" withMargin="false"/>
+											</VBox>
+										</layout:Grid>
+									</layout:VerticalLayout>
+								</layout:content>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+						<layout:BlockLayoutRow>
+							<layout:BlockLayoutCell class="sapUiNoContentPadding">
+								<VBox height="100%" width="100%">
+									<VBox class="sapUiSmallMargin">
+										<layoutData>
+											<FlexItemData growFactor="1" shrinkFactor="0"/></layoutData>
+										<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="Flexibility">
+											<Text text="{CARKPIModel>/PackAndFormulaFlex}"/>
+										</form:SimpleForm>
+									</VBox>
+								</VBox>
+							</layout:BlockLayoutCell>
+							<layout:BlockLayoutCell class="sapUiNoContentPadding">
+								<VBox height="100%" width="100%">
+									<VBox class="sapUiSmallMargin">
+										<form:SimpleForm editable="false" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="0"
+											emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" layout="ColumnLayout" title="Growth Acceleration"
+											singleContainerFullSize="false">
+											<!--<core:Title text="" level="H2"/>-->
+											<Label text="Included in Strategic Plan" wrapping="true" design="Bold"/>
+											<Text text="{CARModel>/InStrategicPlan}"/>
+											<Label text="Included in Rolling Forecast" wrapping="true" design="Bold">
+												<layoutData>
+													<layout:GridData span="L4 M4 S4" linebreakS="false"/>
+												</layoutData>
+											</Label>
+											<Text text="{CARModel>/InRollingForecast}">
+												<layoutData>
+													<layout:GridData span="L2 M2 S2" linebreakS="false"/>
+												</layoutData>
+											</Text>
+											<!--<core:Title text=""/>-->
+											<!--<Label text="" wrapping="true" design="Bold"/>-->
+											<!--<Text text="" class="sapUiSmallMarginTop"/>-->
+											<Label text="Since" wrapping="true" design="Bold" visible="{= ${CARModel>/InRollingForecast} === 'Yes' ? true: false}">
+												<layoutData>
+													<layout:GridData span="L4 M4 S4" linebreakS="false"/>
+												</layoutData>
+											</Label>
+											<Text text="{path: 'CARModel>/Since'}" visible="{= ${CARModel>/InRollingForecast} === 'Yes' ? true: false}">
+												<layoutData>
+													<layout:GridData span="L2 M2 S2" linebreakS="false"/>
+												</layoutData>
+											</Text>
+										</form:SimpleForm>
+									</VBox>
+								</VBox>
+							</layout:BlockLayoutCell>
+						</layout:BlockLayoutRow>
+					</layout:BlockLayout>
+				</layout:VerticalLayout>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

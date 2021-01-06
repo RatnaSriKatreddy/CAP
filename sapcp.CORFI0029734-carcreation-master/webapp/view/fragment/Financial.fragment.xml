@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:core="sap.ui.core">
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Incremental Business">
+		<uxap:blocks>
+			<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.IncrementalBusiness" type="XML"/>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="KPIs">
+		<uxap:blocks>
+			<core:Fragment fragmentName="com.danone.capcarcreation.view.fragment.Kpi" type="XML"/>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

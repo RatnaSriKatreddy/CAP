@@ -1,0 +1,71 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<FlexBox width="100%" justifyContent="Center">
+		<Label text="Sales should be completed in Volumes (K Tons or '000 Liters)" class="sapUiSmallMarginBottom"/>
+	</FlexBox>
+	<Table class="sapUiSizeCompact" items="{TopLineJSONModel>/}">
+		<columns>
+			<Column hAlign="End" width="10rem">
+				<Text text=""/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y1"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y2"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y3"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y4"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y5"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y6"/>
+			</Column>
+			<Column>
+				<Label design="Bold" text="Y7"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Label text="{TopLineJSONModel>Name}" design="Bold" required="{= !${TopLineJSONModel>Name}.includes('New Capacity')}" wrapping="true"/>
+					<Input value="{TopLineJSONModel>Y1}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY1ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY1ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY1ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY1ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY1ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY1ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY1ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY1ValueStateText} : 'None'}"/>
+					<Input value="{TopLineJSONModel>Y2}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY2ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY2ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY2ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY2ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY2ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY2ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY2ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY2ValueStateText} : 'None'}"/>
+					<Input value="{TopLineJSONModel>Y3}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY3ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY3ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY3ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY3ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY3ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY3ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY3ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY3ValueStateText} : 'None'}"/>
+					<Input value="{TopLineJSONModel>Y4}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY4ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY4ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY4ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY4ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY4ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY4ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY4ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY4ValueStateText} : 'None'}"/>
+					<Input value="{TopLineJSONModel>Y5}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY5ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY5ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY5ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY5ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY5ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY5ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY5ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY5ValueStateText} : 'None'}"/>
+					<Input value="{TopLineJSONModel>Y6}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY6ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY6ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY6ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY6ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY6ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY6ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY6ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY6ValueStateText} : 'None'}"/>
+					<Input value="{TopLineJSONModel>Y7}" editable="{= !${TopLineJSONModel>Name}.includes('New Capacity')}"
+						liveChange="onLiveChangeInputTopLineTable" type="Text"
+						valueState="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY7ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY7ValueState} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY7ValueState} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY7ValueState} : 'None'}"
+						valueStateText="{= ${TopLineJSONModel>Name}.includes('Actual Capacity') ? ${errorModel>/ActualCapacityY7ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Additional Capacity') ? ${errorModel>/AdditionalCapacityY7ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('New Capacity') ? ${errorModel>/NewCapacityY7ValueStateText} : ${incrementalBusinessJSONModel>Name}.includes('Demand') ? ${errorModel>/DemandY7ValueStateText} : 'None'}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	<FlexBox width="100%" justifyContent="Center">
+		<Label required="true" text="Please complete all the fields in order to generate the graph" class="sapUiSmallMarginTop"/>
+	</FlexBox>
+</core:FragmentDefinition>

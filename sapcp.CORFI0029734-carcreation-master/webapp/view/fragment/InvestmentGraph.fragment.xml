@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<layout:Grid defaultSpan="L12 M12 S12">
+		<viz:VizFrame id="myViz" uiConfig="{applicationSet:'fiori'}" height="30rem" width="100%" vizType='info/dual_combination'
+			vizProperties="{title: {visible: true,text:'C1 - Innovation, Sales &amp; Market'}, legend: {itemMargin: 0.2, groupByShape: true, label: {style: {fontSize: '11px'}}}, legendGroup: {layout: {alignment: 'center', position: 'bottom'}}, plotArea: {primaryValuesColorPalette: ['red', 'yellow'], secondaryValuesColorPalette: ['#84e184', '#b3ccff'], dataLabel: {visible: true, style: {fontSize:'16px'}}, dataShape:{primaryAxis: ['line', 'line'], secondaryAxis: ['bar', 'bar']}}, valueAxis: { title: { visible: false } }, valueAxis2: { title: { visible: false } }, categoryAxis: { title: { visible: false }, label: {style: {fontSize: '16px'}} }}">
+			<viz:dataset>
+				<viz.data:FlattenedDataset data="{InvestmentGraphData>/}">
+					<viz.data:dimensions>
+						<viz.data:DimensionDefinition value="{Year}" name="Year"/>
+					</viz.data:dimensions>
+					<viz.data:measures>
+						<viz.data:MeasureDefinition value="{MarketShareWithoutInvestment}" unit="%" name="Market share without investment" group="1"/>
+						<viz.data:MeasureDefinition value="{MarketShareWithInvestment}" unit="%" name="Market share with investment" group="1"/>
+						<viz.data:MeasureDefinition value="{SalesWithInvestment}" name="Sales with investment" group="2"/>
+						<viz.data:MeasureDefinition value="{SalesWithoutInvestment}" name="Sales without investment" group="2"/>
+					</viz.data:measures>
+				</viz.data:FlattenedDataset>
+			</viz:dataset>
+			<viz:feeds>
+				<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Market share with investment,Market share without investment"/>
+				<viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Sales with investment,Sales without investment"/>
+				<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Year"/>
+			</viz:feeds>
+		</viz:VizFrame>
+	</layout:Grid>
+</core:FragmentDefinition>

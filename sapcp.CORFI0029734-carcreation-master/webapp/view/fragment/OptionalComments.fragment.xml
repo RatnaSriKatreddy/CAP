@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="">
+		<uxap:blocks>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="">
+				<Label text="Optional Comments" wrapping="true"/>
+				<TextArea id="additionalComment" value="{CARModel>/Comment}" showExceededText="false" maxLength="5000" rows="7" width="100%"
+					valueState="None" valueLiveUpdate="false" growing="true" growingMaxLines="10"/>
+			</form:SimpleForm>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>

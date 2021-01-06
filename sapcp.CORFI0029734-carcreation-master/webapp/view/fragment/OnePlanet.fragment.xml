@@ -1,0 +1,526 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Volume">
+		<uxap:blocks>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Site Volume production" columnsM="2" columnsL="4" columnsXL="4"
+				breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024" class="sapUiTinyMarginBottom">
+				<form:content>
+					<Label text="Current Year Prod (kTn/Yr)" wrapping="true"
+						required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputSiteTonsBeforeProjCurrentYearId" value="{CAROnePlanetModel>/CurrentYearProd}" type="Text" showValueHelp="true"
+						valueState="{errorModel>/CurrentYearProdValueState}" liveChange="onLiveChangeInputCurrentYearProd"
+						valueStateText="{errorModel>/CurrentYearProdValueStateText}">
+						<layoutData>
+							<layout:GridData span="L2 M4 S6"/>
+						</layoutData>
+					</Input>
+					<Label text="Additional Volume (year 3)" wrapping="true">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="input"
+						value="{= ${CARModel>/FinancingTypeId} !== 3 ? ${incrementalBusinessJSONModel>/1/Y3} : ${incrementalBusinessJSONModel>/2/Y3}}"
+						editable="false">
+						<layoutData>
+							<layout:GridData span="L2 M4 S6"/>
+						</layoutData>
+					</Input>
+					<Label text="Volume w/ project" wrapping="true">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input
+						value="{= ${CAROnePlanetModel>/CurrentYearProd} ? (parseFloat(${CAROnePlanetModel>/CurrentYearProd}) + (${CARModel>/FinancingTypeId} !== 3 ? parseFloat(${incrementalBusinessJSONModel>/1/Y3}) : parseFloat(${incrementalBusinessJSONModel>/2/Y3}))) : 0}"
+						editable="false">
+						<layoutData>
+							<layout:GridData span="L2 M4 S6"/>
+						</layoutData>
+					</Input>
+				</form:content>
+			</form:SimpleForm>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Energy consumption">
+		<uxap:blocks>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsM="2" columnsL="4" columnsXL="4" breakpointL="601"
+				emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+				<form:content>
+					<Label text="Current (avg site) (in kwh/tn)" wrapping="true"
+						required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputCurrentEnergyConsumptionId" value="{CAROnePlanetModel>/CurrentEnergyConsumption}" type="Text" showValueHelp="true"
+						valueState="{errorModel>/CurrentEnergyConsumptionValueState}" liveChange="onLiveChangeInputNonNegativeValue"
+						valueStateText="{errorModel>/CurrentEnergyConsumptionValueStateText}">
+						<layoutData>
+							<layout:GridData span="L2 M3 S6"/>
+						</layoutData>
+					</Input>
+					<Label text="Project (in kwh/tn)" wrapping="true"
+						required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputProjectEnergyConsumptionId" value="{CAROnePlanetModel>/ProjectEnergyConsumption}" type="Text" showValueHelp="true"
+						valueState="{errorModel>/ProjectEnergyConsumptionValueState}" liveChange="onLiveChangeInputNonNegativeValue"
+						valueStateText="{errorModel>/ProjectEnergyConsumptionValueStateText}">
+						<layoutData>
+							<layout:GridData span="L2 M3 S6"/>
+						</layoutData>
+					</Input>
+					<Label text="Site Proj. incl (in kwh/tn)" wrapping="true"
+						required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputSiteProjectEnergyConsumptionId" value="{CAROnePlanetModel>/SiteProjectEnergyConsumption}" type="Text" showValueHelp="true"
+						valueState="{errorModel>/SiteProjectEnergyConsumptionValueState}" liveChange="onLiveChangeInputNonNegativeValue"
+						valueStateText="{errorModel>/SiteProjectEnergyConsumptionValueStateText}">
+						<layoutData>
+							<layout:GridData span="L2 M3 S6"/>
+						</layoutData>
+					</Input>
+					<Label text="WBU avg (in kwh/tn)" wrapping="true">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputEnergyWBUAvgId" value="{CAROnePlanetModel>/WWBUAvgEnergyConsumption}" type="Text" showValueHelp="true"
+						liveChange="onLiveChangeInputNonNegativeValue" valueState="{errorModel>/WWBUAvgEnergyConsumptionValueState}"
+						valueStateText="{errorModel>/WWBUAvgEnergyConsumptionValueStateText}">
+						<layoutData>
+							<layout:GridData span="L2 M3 S6"/>
+						</layoutData>
+					</Input>
+				</form:content>
+			</form:SimpleForm>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Green Energy">
+		<uxap:blocks>
+			<VBox class="sapUiSmallMargin">
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Green energy (% over total energy)" columnsM="2" columnsL="4"
+					columnsXL="4" breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<Label text="Before project" required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"
+						wrapping="true">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputBeforeGreenEnergyId" valueState="{errorModel>/BeforeGreenEnergyValueState}" liveChange="onLiveChangeInputBeforeGreenEnergy"
+						valueStateText="{errorModel>/BeforeGreenEnergyValueStateText}" showValueHelp="true" type="Text">
+						<layoutData>
+							<layout:GridData span="L2 M3 S6"/>
+						</layoutData>
+					</Input>
+					<Label text="After project" required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"
+						wrapping="true">
+						<layoutData>
+							<layout:GridData span="L1 M2 S6"/>
+						</layoutData>
+					</Label>
+					<Input id="inputAfterGreenEnergyId" showValueHelp="true" type="Text" valueState="{errorModel>/AfterGreenEnergyValueState}"
+						liveChange="onLiveChangeInputAfterGreenEnergy" valueStateText="{errorModel>/AfterGreenEnergyValueStateText}">
+						<layoutData>
+							<layout:GridData span="L2 M3 S6"/>
+						</layoutData>
+					</Input>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsM="2" columnsL="4" columnsXL="4" breakpointL="601"
+					emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<form:content>
+						<Label text="Green energy type" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Select change="onChangeSelect" items="{ path: '/GreenEnergyTypes', sorter: '{Name}' }" selectedKey="{CAROnePlanetModel>/GreenEnergyTypeId}"
+							valueState="{errorModel>/GreenEnergyTypeIdValueState}" valueStateText="{errorModel>/GreenEnergyTypeIdValueStateText}" forceSelection="false">
+							<core:Item key="{Id}" text="{Name}"/>
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Select>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Packaging">
+		<uxap:blocks>
+			<VBox class="sapUiSmallMargin">
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="% of plastics recyclable, reusable or compostable" columnsM="2"
+					columnsL="4" columnsXL="4" breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<form:content>
+						<Label text="Current (site)" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputSitePlasticRecyclableId" type="Text" valueState="{errorModel>/SitePlasticRecyclableValueState}"
+							liveChange="onLiveChangeInputSitePlasticRecyclable" valueStateText="{errorModel>/SitePlasticRecyclableValueStateText}" showValueHelp="true">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Project" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputProjectPlasticRecyclableId" type="Text" valueState="{errorModel>/ProjectPlasticRecyclableValueState}"
+							liveChange="onLiveChangeInputProjectPlasticRecyclable" valueStateText="{errorModel>/ProjectPlasticRecyclableValueStateText}"
+							showValueHelp="true">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="After Project (site)" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputAfterProjectPlasticRecyclableId" type="Text" valueState="{errorModel>/AfterProjectPlasticRecyclableValueState}"
+							liveChange="onLiveChangeInputAfterProjectPlasticRecyclable" valueStateText="{errorModel>/AfterProjectPlasticRecyclableValueStateText}"
+							showValueHelp="true">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout"
+					title="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID} ? '% rPET (only for WBU Waters)' : ''}" columnsM="2" columnsL="4"
+					columnsXL="4" breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024"
+					visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}">
+					<form:content>
+						<Label text="Current (site)" required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"
+							visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputSitePETId" type="Text" valueState="{errorModel>/SitePETValueState}" liveChange="onLiveChangeInputSitePET"
+							valueStateText="{errorModel>/SitePETValueStateText}" showValueHelp="true" visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Project" required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"
+							visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputProjectPETId" type="Text" valueState="{errorModel>/ProjectPETValueState}" liveChange="onLiveChangeInputProjectPET"
+							valueStateText="{errorModel>/ProjectPETValueStateText}" showValueHelp="true"
+							visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="After Project (site)" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}"
+							visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputAfterProjectPETId" type="Text" valueState="{errorModel>/AfterProjectPETValueState}"
+							liveChange="onLiveChangeInputAfterProjectPET" valueStateText="{errorModel>/AfterProjectPETValueStateText}" showValueHelp="true"
+							visible="{= ${CARModel>/WWBUId} === ${RandomModel>/WBUWatersID}}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="CO2 Impact">
+		<uxap:blocks>
+			<VBox class="sapUiSmallMargin">
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="CO2 Intensity" columnsM="2" columnsL="4" columnsXL="4"
+					breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024" class="customMarginMatthijs">
+					<form:content>
+						<!--<core:Title text="CO2 Intensity: Tn CO2 by Tn Finished Prod. (full scope CO2)"/>-->
+						<Label text="Current (avg of the site in kg / ton of finished product)" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputSiteCO2Id" value="{CAROnePlanetModel>/SiteCO2}" type="Text" valueState="{errorModel>/SiteCO2ValueState}"
+							liveChange="onLiveChangeInputSiteCO2" valueStateText="{errorModel>/SiteCO2ValueStateText}" showValueHelp="true">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Project (in kg / ton of finished product)"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputProjectCO2Id" value="{CAROnePlanetModel>/ProjectCO2}" type="Text" valueState="{errorModel>/ProjectCO2ValueState}"
+							liveChange="onLiveChangeInputNonNegativeValue" valueStateText="{errorModel>/ProjectCO2ValueStateText}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Site after project (in kg / ton of finished product)" wrapping="true"
+							required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input value="{CAROnePlanetModel>/SiteProjectInclCO2}" type="Text" valueState="{errorModel>/SiteProjectInclCO2ValueState}"
+							liveChange="onLiveChangeInputSiteProjectInclCO2" valueStateText="{errorModel>/SiteProjectInclCO2ValueStateText}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="WBU avg" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputCO2WBUId" value="{CAROnePlanetModel>/WWBUAverageCO2}" type="Text" showValueHelp="true"
+							valueState="{errorModel>/WWBUAverageCO2ValueState}" valueStateText="{errorModel>/WWBUAverageCO2ValueStateText}"
+							liveChange="onLiveChangeInputNonNegativeValue">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="kTn CO2 absolute value (site scope)" columnsM="2" columnsL="4"
+					columnsXL="4" breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<form:content>
+						<Label text="Current (1yr site)" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input
+							value="{= (${CAROnePlanetModel>/SiteCO2} &amp;&amp; ${CAROnePlanetModel>/CurrentYearProd}) ? parseFloat(parseFloat(${CAROnePlanetModel>/SiteCO2}) * parseFloat(${CAROnePlanetModel>/CurrentYearProd})).toFixed(3) : 0}"
+							editable="false">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Volume effect" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input
+							value="{= (${CAROnePlanetModel>/SiteCO2}) ? parseFloat((${CARModel>/FinancingTypeId} !== 3 ? parseFloat(${incrementalBusinessJSONModel>/1/Y3}) : parseFloat(${incrementalBusinessJSONModel>/2/Y3})) * parseFloat(${CAROnePlanetModel>/SiteCO2})).toFixed(3) : 0}"
+							editable="false">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="After project (1yr site)" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input
+							value="{= (${CAROnePlanetModel>/SiteProjectInclCO2} &amp;&amp; ${CAROnePlanetModel>/CurrentYearProd}) ? parseFloat(parseFloat(${CAROnePlanetModel>/SiteProjectInclCO2}) * (parseFloat(${CAROnePlanetModel>/CurrentYearProd}) + (${CARModel>/FinancingTypeId} !== 3 ? parseFloat(${incrementalBusinessJSONModel>/1/Y3}) : parseFloat(${incrementalBusinessJSONModel>/2/Y3})))).toFixed(3) : 0}"
+							editable="false">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Efficiency / green" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input
+							value="{= (${CAROnePlanetModel>/SiteProjectInclCO2} &amp;&amp; ${CAROnePlanetModel>/CurrentYearProd}) ? parseFloat((parseFloat(${CAROnePlanetModel>/SiteProjectInclCO2}) * (parseFloat(${CAROnePlanetModel>/CurrentYearProd}) + (${CARModel>/FinancingTypeId} !== 3 ? parseFloat(${incrementalBusinessJSONModel>/1/Y3}) : parseFloat(${incrementalBusinessJSONModel>/2/Y3})))) - (parseFloat(${CAROnePlanetModel>/SiteCO2}) * parseFloat(${CAROnePlanetModel>/CurrentYearProd})) - ((${CARModel>/FinancingTypeId} !== 3 ? parseFloat(${incrementalBusinessJSONModel>/1/Y3}) : parseFloat(${incrementalBusinessJSONModel>/2/Y3})) * parseFloat(${CAROnePlanetModel>/SiteCO2}))).toFixed(3) : 0}"
+							editable="false">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsM="2" columnsL="4" columnsXL="4" breakpointL="601"
+					emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<form:content>
+						<Label text="Total Var" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input
+							value="{= (${CAROnePlanetModel>/SiteProjectInclCO2} &amp;&amp; ${CAROnePlanetModel>/CurrentYearProd}) ? parseFloat((parseFloat(${CAROnePlanetModel>/SiteProjectInclCO2}) * (parseFloat(${CAROnePlanetModel>/CurrentYearProd}) + (${CARModel>/FinancingTypeId} !== 3 ? parseFloat(${incrementalBusinessJSONModel>/1/Y3}) : parseFloat(${incrementalBusinessJSONModel>/2/Y3})))) - (parseFloat(${CAROnePlanetModel>/SiteCO2}) * parseFloat(${CAROnePlanetModel>/CurrentYearProd}))).toFixed(3) : 0}"
+							editable="false">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Water monetizer">
+		<uxap:blocks>
+			<VBox class="sapUiSmallMargin">
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Consumption m3/tn" columnsM="2" columnsL="4" columnsXL="4"
+					breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<form:content>
+						<Label text="Current (avg site)" wrapping="true" required="{RandomModel>/waterMandatory}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputSiteWaterId" value="{CAROnePlanetModel>/SiteWater}" type="Text" valueState="{errorModel>/SiteWaterValueState}"
+							liveChange="onLiveChangeInputDecimal" valueStateText="{errorModel>/SiteWaterValueStateText}" showValueHelp="true">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Project" required="{RandomModel>/waterMandatory}" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input value="{CAROnePlanetModel>/ProjectWater}" type="Text" valueState="{errorModel>/ProjectWaterValueState}"
+							liveChange="onLiveChangeInputDecimal" valueStateText="{errorModel>/ProjectWaterValueStateText}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="Site Proj. Incl." wrapping="true" required="{RandomModel>/waterMandatory}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input value="{CAROnePlanetModel>/SiteProjectInclWater}" type="Text" valueState="{errorModel>/SiteProjectInclWaterValueState}"
+							liveChange="onLiveChangeInputDecimal" valueStateText="{errorModel>/SiteProjectInclWaterValueStateText}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+						<Label text="WBU avg" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<Input id="inputWaterWBUId" value="{CAROnePlanetModel>/WBUAverageWater}" type="Text" showValueHelp="true"
+							liveChange="onLiveChangeInputDecimal" valueState="{errorModel>/WBUAverageWaterValueState}"
+							valueStateText="{errorModel>/WBUAverageWaterValueStateText}">
+							<layoutData>
+								<layout:GridData span="L2 M3 S6"/>
+							</layoutData>
+						</Input>
+					</form:content>
+				</form:SimpleForm>
+				<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Compliance VS Danone Internal Standards" columnsM="2" columnsL="4"
+					columnsXL="4" breakpointL="601" emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+					<form:content>
+						<Label text="Current (avg site)" wrapping="true" required="{RandomModel>/waterMandatory}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<HBox>
+							<RadioButtonGroup id="radioSiteComplianceWaterId" select="radioSiteComplianceWaterSelected" selectedIndex="-1" columns="2"
+								valueState="{errorModel>/SiteComplianceWaterValueState}">
+								<RadioButton groupName="CO2Current" text="Yes"/>
+								<RadioButton groupName="CO2Current" text="No"/>
+							</RadioButtonGroup>
+							<Button id="iconRadioSiteComplianceWaterId" class="sapUiTinyMarginBegin sapUiNoMarginEnd sapUiNoMarginTop sapUiNoMarginBottom"
+								icon="sap-icon://hint" press="iconButtonPress" type="Transparent"/>
+							<layoutData>
+								<layout:GridData span="L3 M4 S6"/>
+							</layoutData>
+						</HBox>
+						<Label text="Project" required="{RandomModel>/waterMandatory}" wrapping="true">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<RadioButtonGroup id="radioProjectComplianceWaterId" select="radioProjectComplianceWaterSelected" selectedIndex="-1" columns="2"
+							valueState="{errorModel>/ProjectComplianceWaterValueState}">
+							<RadioButton groupName="CO2Project" text="Yes"/>
+							<RadioButton groupName="CO2Project" text="No"/>
+							<layoutData>
+								<layout:GridData span="L3 M4 S6"/>
+							</layoutData>
+						</RadioButtonGroup>
+						<Label text="Site Proj. Incl." wrapping="true" required="{RandomModel>/waterMandatory}">
+							<layoutData>
+								<layout:GridData span="L1 M2 S6"/>
+							</layoutData>
+						</Label>
+						<RadioButtonGroup id="radioSiteProjectInclComplianceWaterId" select="radioSiteProjectInclComplianceWaterSelected" selectedIndex="-1"
+							columns="2" valueState="{errorModel>/SiteProjectInclComplianceWaterValueState}">
+							<RadioButton groupName="CO2Site" text="Yes"/>
+							<RadioButton groupName="CO2Site" text="No"/>
+							<layoutData>
+								<layout:GridData span="L3 M4 S6"/>
+							</layoutData>
+						</RadioButtonGroup>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Green Pay-back">
+		<uxap:blocks>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="" columnsM="2" columnsL="4" columnsXL="4" breakpointL="601"
+				emptySpanS="4" emptySpanM="4" emptySpanL="0" emptySpanXL="2" breakpointXL="1024">
+				<Label text="Green Payback (months)"
+					required="{= ${CARModel>/CategoryId} === 1 || ${CARModel>/CategoryId} === 2 || ${CARModel>/CategoryId} === 3}" wrapping="true">
+					<layoutData>
+						<layout:GridData span="L1 M2 S6"/>
+					</layoutData>
+				</Label>
+				<Input id="inputGreenPaybackMonthsId" value="{CAROnePlanetModel>/GreenPaybackMonths}"
+					valueState="{errorModel>/GreenPaybackMonthsValueState}" liveChange="onLiveChangeInputDecimal"
+					valueStateText="{errorModel>/GreenPaybackMonthsValueStateText}" showValueHelp="true">
+					<layoutData>
+						<layout:GridData span="L2 M3 S6"/>
+					</layoutData>
+				</Input>
+			</form:SimpleForm>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+	<uxap:ObjectPageSubSection titleLevel="H1" titleUppercase="true" title="Other">
+		<uxap:blocks>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="">
+				<Label text="Other" wrapping="true">
+					<layoutData>
+						<layout:GridData span="L1 M1 S6"/>
+					</layoutData>
+				</Label>
+				<TextArea id="otherOnePlanet" value="{CAROnePlanetModel>/Other}" showExceededText="false" maxLength="400" width="100%" rows="5"
+					valueState="None" valueLiveUpdate="false" growing="true" growingMaxLines="10">
+					<layoutData>
+						<layout:GridData span="L11 M11 S6"/>
+					</layoutData>
+				</TextArea>
+			</form:SimpleForm>
+		</uxap:blocks>
+	</uxap:ObjectPageSubSection>
+</core:FragmentDefinition>
